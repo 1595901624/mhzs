@@ -47,8 +47,8 @@ public class HookMain {
                          * 获取360加固的CLASSLOADER
                          *
                          */
-
                         if (Config.IS_FIRST_RUN) {
+                            //加锁防止多次运行
                             synchronized (HookMain.class) {
                                 if (Config.IS_FIRST_RUN) {
                                     Config.IS_FIRST_RUN = false;
