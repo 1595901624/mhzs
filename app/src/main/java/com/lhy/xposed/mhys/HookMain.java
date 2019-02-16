@@ -89,7 +89,7 @@ public class HookMain {
 
         /**
          * 在com.mh.movie.core.mvp.ui.activity.SplashActivity中
-         * 替换f()方法，去除5s启动
+         * 替换a()方法，去除5s启动
          */
         XposedHelpers.findAndHookMethod(splashActivityClassName, classLoader, "a", long.class, List.class, boolean.class, new XC_MethodReplacement() {
             @Override
