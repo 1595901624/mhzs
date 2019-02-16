@@ -42,18 +42,6 @@ public class HookMain {
         //进入麻花领空
 
         /**
-         * 取消选择通道的提示，替换e_()方法
-         */
-//        XposedHelpers.findAndHookMethod(SplashActivityClassName, classLoader, "e_",
-//                new XC_MethodReplacement() {
-//                    @Override
-//                    protected Object replaceHookedMethod(MethodHookParam methodHookParam) throws Throwable {
-//                        return null;
-//                    }
-//                });
-
-
-        /**
          * 在com.mh.movie.core.mvp.ui.activity.SplashActivity中
          * 替换f()方法，去除5s启动
          */
