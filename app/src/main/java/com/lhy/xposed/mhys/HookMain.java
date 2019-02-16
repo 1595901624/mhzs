@@ -3,7 +3,10 @@ package com.lhy.xposed.mhys;
 import android.content.Context;
 
 import com.lhy.xposed.mhys.plugin.ClearBootAdPlugin;
+import com.lhy.xposed.mhys.plugin.ClearMainAdPlugin;
+import com.lhy.xposed.mhys.plugin.ClearPlayerAdPlugin;
 import com.lhy.xposed.mhys.plugin.IPlugin;
+import com.lhy.xposed.mhys.plugin.WatchHotMoviePlugin;
 
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedHelpers;
@@ -23,7 +26,13 @@ public class HookMain {
         final ClassLoader classLoader = context.getClassLoader();
 
         //进入麻花领空,运行插件
-        IPlugin[] iPlugins = new IPlugin[]{new ClearBootAdPlugin()};
+        IPlugin[] iPlugins = new IPlugin[]{
+                new ClearBootAdPlugin(),
+                new ClearMainAdPlugin(),
+                new ClearPlayerAdPlugin(),
+//                new WatchHotMoviePlugin()
+        };
+
         for (IPlugin iPlugin : iPlugins) {
             iPlugin.run(classLoader);
         }
