@@ -18,10 +18,11 @@ public class HookLoader implements IXposedHookLoadPackage {
 
         try {
             //在发布时，直接调用即可。
-//            if (!BuildConfig.DEBUG) {
-//                handleLoadPackage4release(loadPackageParam);
-//                return;
-//            }
+            if (!BuildConfig.DEBUG) {
+                HookMain hookMain = new HookMain();
+                hookMain.handleLoadPackage4release(loadPackageParam);
+                return;
+            }
             //在调试模式为了不频繁重启，使用反射的方式调用自身的指定函数。
 
             /*【方法2】*/
