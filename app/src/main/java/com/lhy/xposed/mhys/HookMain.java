@@ -6,6 +6,8 @@ import com.lhy.xposed.mhys.plugin.ClearBootAdPlugin;
 import com.lhy.xposed.mhys.plugin.ClearMainAdPlugin;
 import com.lhy.xposed.mhys.plugin.ClearPlayerAdPlugin;
 import com.lhy.xposed.mhys.plugin.IPlugin;
+import com.lhy.xposed.mhys.plugin.InfiniteCachePlugin;
+import com.lhy.xposed.mhys.plugin.VideoURLPlugin;
 import com.lhy.xposed.mhys.plugin.WatchHotMoviePlugin;
 
 import de.robv.android.xposed.XC_MethodHook;
@@ -30,7 +32,9 @@ public class HookMain {
                 new ClearBootAdPlugin(),
                 new ClearMainAdPlugin(),
                 new ClearPlayerAdPlugin(),
-//                new WatchHotMoviePlugin()
+                new WatchHotMoviePlugin(),
+//                new InfiniteCachePlugin(),
+                new VideoURLPlugin()
         };
 
         for (IPlugin iPlugin : iPlugins) {
