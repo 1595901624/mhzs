@@ -9,6 +9,9 @@ import com.lhy.xposed.mhys.bean.VideoInfoBean;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedHelpers;
 
+/**
+ * 获取视频真是地址
+ */
 public class VideoURLPlugin implements IPlugin {
     private final String resultStrHandleSubscriberClassName = "com.mh.movie.core.mvp.model.a.b";
     private final String aesUtilClassName = "com.mh.movie.core.mvp.ui.utils.AesUtil";
