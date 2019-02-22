@@ -1,15 +1,9 @@
 package com.lhy.xposed.mhzs.plugin;
 
-import android.app.Activity;
-
-import com.lhy.xposed.mhzs.helper.HYHelper;
 import com.lhy.xposed.mhzs.helper.LogUtil;
 import com.lhy.xposed.mhzs.helper.XPrefUtils;
 
-import java.util.List;
-
 import de.robv.android.xposed.XC_MethodHook;
-import de.robv.android.xposed.XC_MethodReplacement;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 
@@ -23,6 +17,7 @@ public class ClearBootAdPlugin implements IPlugin {
 
     private final String constantsClassName = "com.mh.movie.core.mvp.ui.b";
     private final String loginResponseClassName = "com.mh.movie.core.mvp.model.entity.response.LoginResponse";
+
     @Override
     public void run(final ClassLoader classLoader) throws Throwable {
         /**
@@ -38,7 +33,7 @@ public class ClearBootAdPlugin implements IPlugin {
          * 将AdList设置为空
          */
         try {
-            // TODO: 2019/2/22 0022 Exposed ISSUE
+            // TODO: 2019/2/22 0022 Exposed/VXP ISSUE--TOO SHORT METHOD!!!
             XposedHelpers.findAndHookMethod(loginResponseClassName, classLoader, "getAdsList", new XC_MethodHook() {
                 @Override
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {

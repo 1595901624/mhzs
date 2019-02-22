@@ -1,9 +1,11 @@
 package com.lhy.xposed.mhzs.fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.didikee.donate.AlipayDonate;
 import android.didikee.donate.WeiXinDonate;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 
@@ -14,17 +16,24 @@ import androidx.preference.SwitchPreferenceCompat;
 
 import com.lhy.xposed.mhzs.R;
 import com.lhy.xposed.mhzs.activity.AdSettingActivity;
+import com.lhy.xposed.mhzs.activity.HelpActivity;
 import com.lhy.xposed.mhzs.activity.TabSettingActivity;
+import com.lhy.xposed.mhzs.helper.LogUtil;
 import com.lhy.xposed.mhzs.helper.ToastUtils;
 
 import java.io.File;
 import java.io.InputStream;
 
 public class SettingFragment extends PreferenceFragmentCompat {
+    private PreferenceGroup pcDetailPreferenceGroup;
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
         addPreferencesFromResource(R.xml.pref_mhzs);
+        pcDetailPreferenceGroup = findPreference("pc_detail");
+
+        SharedPreferences sp = getPreferenceManager().getSharedPreferences();
+        pcDetailPreferenceGroup.setVisible(sp.getBoolean("global_set", false));
     }
 
     @Override
@@ -38,6 +47,12 @@ public class SettingFragment extends PreferenceFragmentCompat {
                 return true;
             case "tab_set":
                 startActivity(new Intent(getActivity(), TabSettingActivity.class));
+                return true;
+            case "help":
+                startActivity(new Intent(getActivity(), HelpActivity.class));
+                return true;
+            case "github":
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/1595901624/mhzs")));
                 return true;
             case "donate_alipay":
                 donateAlipay();
@@ -53,7 +68,6 @@ public class SettingFragment extends PreferenceFragmentCompat {
 
     private void globalSet(Preference preference) {
         SwitchPreferenceCompat switchPreferenceCompat = findPreference("global_set");
-        PreferenceGroup pcDetailPreferenceGroup = findPreference("pc_detail");
         if (switchPreferenceCompat.isChecked()) {
             pcDetailPreferenceGroup.setVisible(true);
             ToastUtils.toast(getActivity(), "麻花助手已经开启！");

@@ -15,14 +15,12 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <!--<TextView
-            android:id="@+id/id_help_tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/help"
-            android:textColor="#fff"
-            android:textSize="20sp" />-->
     </androidx.appcompat.widget.Toolbar>
+
+    <WebView
+        android:id="@+id/help_web"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </WebView>
 
 </LinearLayout>

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.graphics.Color;
 
 import com.lhy.xposed.mhzs.fragment.SettingFragment;
+import com.lhy.xposed.mhzs.helper.HYHelper;
 import com.lhy.xposed.mhzs.helper.ToastUtils;
 import com.lhy.xposed.mhzs.permission.PermissionHelper;
 import com.lhy.xposed.mhzs.permission.PermissionInterface;
@@ -17,7 +18,7 @@ public class MainActivity extends BaseActivity implements PermissionInterface {
 
     @Override
     protected void initToolbar(Toolbar mToolbar) {
-        mToolbar.setTitle("麻花影视助手");
+        mToolbar.setTitle("麻花影视助手 " + HYHelper.getPackageName(this));
         mToolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
