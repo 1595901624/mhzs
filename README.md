@@ -55,6 +55,9 @@
 
 ## 捐赠
 
+!(https://github.com/1595901624/mhzs/blob/master/alipay.jpg?raw=true)
+
+!(https://github.com/1595901624/mhzs/blob/master/wechat.jpg?raw=true)
 
 
    
