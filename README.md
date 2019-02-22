@@ -55,9 +55,9 @@
 
 ## 捐赠
 
-![支付宝捐赠](https://github.com/1595901624/mhzs/blob/master/alipay.jpg?raw=true)
+![支付宝捐赠](https://github.com/1595901624/mhzs/blob/master/alipayc.jpg?raw=true)
 
-![微信捐赠](https://github.com/1595901624/mhzs/blob/master/wechat.jpg?raw=true)
+![微信捐赠](https://github.com/1595901624/mhzs/blob/master/wechatc.jpg?raw=true)
 
 
    
