@@ -1,6 +1,10 @@
 package com.lhy.xposed.mhzs;
 
+import android.util.Log;
+
 import com.lhy.xposed.mhzs.helper.Config;
+import com.lhy.xposed.mhzs.helper.LogUtil;
+import com.lhy.xposed.mhzs.helper.XPrefUtils;
 
 import java.io.File;
 import java.lang.reflect.Method;

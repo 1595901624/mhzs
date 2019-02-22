@@ -1,16 +1,30 @@
 package com.lhy.xposed.mhzs.activity;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Color;
 
-import com.lhy.xposed.mhzs.R;
+import com.lhy.xposed.mhzs.fragment.SettingFragment;
+
+import androidx.appcompat.widget.Toolbar;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected void initToolbar(Toolbar mToolbar) {
+        mToolbar.setTitle("麻花影视助手");
+        mToolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    public void initData() {
+        switchFragment(new SettingFragment());
+    }
+
 }

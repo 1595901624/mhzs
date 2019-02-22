@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:summary="自定义主界面底部的按钮"
+        android:title="底部栏设置">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="tab2"
+            android:title="去除第2个按钮" />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="tab3"
+            android:title="去除第3个按钮" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="tab4"
+            android:title="去除第4个按钮" />
+    </PreferenceCategory>
+</PreferenceScreen>

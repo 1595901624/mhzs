@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="净化广告">
+        <!--<CheckBoxPreference-->
+        <!--android:key="checkbox"-->
+        <!--android:summary="check it box"-->
+        <!--android:title="CheckBoxPreference" />-->
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="ad_boot"
+            android:summary="去除5s倒计时并自动进入APP"
+            android:title="去除启动页广告" />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="ad_main"
+            android:summary="去除“推荐”、“电影”、“电视剧”页面中间的广告"
+            android:title="去除首页广告" />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="ad_player"
+            android:title="去除视频播放页广告" />
+    </PreferenceCategory>
+</PreferenceScreen>
