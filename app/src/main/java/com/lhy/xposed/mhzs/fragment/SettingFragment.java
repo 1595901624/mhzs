@@ -79,9 +79,9 @@ public class SettingFragment extends PreferenceFragmentCompat {
      * 微信捐献
      */
     private void donateWeixin() {
-        InputStream weixinQrIs = getResources().openRawResource(R.raw.wx_donate);
+        InputStream weixinQrIs = getResources().openRawResource(R.raw.wechatc);
         String qrPath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "AndroidDonateSample" + File.separator +
-                "wx_donate.png";
+                "wechatc.jpg";
         WeiXinDonate.saveDonateQrImage2SDCard(qrPath, BitmapFactory.decodeStream(weixinQrIs));
         WeiXinDonate.donateViaWeiXin(getActivity(), qrPath);
     }
