@@ -2,8 +2,9 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <PreferenceCategory
-        android:iconSpaceReserved="false"
+        app:iconSpaceReserved="false"
         android:title="全局设置">
+
         <SwitchPreferenceCompat
             android:defaultValue="true"
             android:key="global_set"
@@ -25,13 +26,19 @@
             app:iconSpaceReserved="false" />
 
         <Preference
-            android:key="donate"
-            android:title="捐赠"
+            android:key="donate_alipay"
+            android:title="支付宝捐赠"
+            app:iconSpaceReserved="false" />
+
+        <Preference
+            android:key="donate_wx"
+            android:title="微信捐赠"
             app:iconSpaceReserved="false" />
     </PreferenceCategory>
 
     <PreferenceCategory
         android:key="pc_detail"
+        app:iconSpaceReserved="false"
         android:title="详细设置">
         <Preference
             android:key="ad_set"
@@ -42,6 +49,13 @@
         <Preference
             android:key="tab_set"
             android:title="底部栏设置"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="five_seconds"
+            android:title="去除5s启动"
+            android:summary="自动进入主界面"
             app:iconSpaceReserved="false" />
 
         <SwitchPreferenceCompat

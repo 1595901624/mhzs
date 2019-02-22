@@ -4,10 +4,11 @@ import android.graphics.Color;
 import android.view.MenuItem;
 
 import com.lhy.xposed.mhzs.fragment.AdSettingFragment;
+import com.lhy.xposed.mhzs.fragment.TabSettingFragment;
 
 import androidx.appcompat.widget.Toolbar;
 
-public class AdActivity extends BaseActivity {
+public class TabSettingActivity extends BaseActivity {
     @Override
     protected void initToolbar(Toolbar mToolbar) {
         mToolbar.setTitle("广告净化");
@@ -23,16 +24,7 @@ public class AdActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        switchFragment(new AdSettingFragment());
+        switchFragment(new TabSettingFragment());
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home){
-            onBackPressed();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }
-

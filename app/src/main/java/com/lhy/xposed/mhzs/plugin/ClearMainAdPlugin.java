@@ -1,6 +1,7 @@
 package com.lhy.xposed.mhzs.plugin;
 
 import com.lhy.xposed.mhzs.helper.LogUtil;
+import com.lhy.xposed.mhzs.helper.XPrefUtils;
 
 import java.util.List;
 
@@ -38,5 +39,10 @@ public class ClearMainAdPlugin implements IPlugin {
             XposedBridge.log(e);
         }
 
+    }
+
+    @Override
+    public boolean isOpen() {
+        return XPrefUtils.getPref().getBoolean("ad_main", true);
     }
 }

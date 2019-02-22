@@ -80,4 +80,9 @@ public class VideoURLPlugin implements IPlugin {
             }
         });
     }
+
+    @Override
+    public boolean isOpen() {
+        return false;
+    }
 }

@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.lhy.xposed.mhzs.helper.HYHelper;
 import com.lhy.xposed.mhzs.helper.LogUtil;
+import com.lhy.xposed.mhzs.helper.XPrefUtils;
 
 import java.util.List;
 
@@ -20,11 +21,8 @@ import de.robv.android.xposed.XposedHelpers;
  */
 public class ClearBootAdPlugin implements IPlugin {
 
-    private final String splashActivityClassName = "com.mh.movie.core.mvp.ui.activity.SplashActivity";
     private final String constantsClassName = "com.mh.movie.core.mvp.ui.b";
     private final String loginResponseClassName = "com.mh.movie.core.mvp.model.entity.response.LoginResponse";
-    private final String mainActivityClassName = "com.mh.movie.core.mvp.ui.activity.main.MainActivity";
-
     @Override
     public void run(final ClassLoader classLoader) throws Throwable {
         /**
@@ -40,6 +38,7 @@ public class ClearBootAdPlugin implements IPlugin {
          * 将AdList设置为空
          */
         try {
+            // TODO: 2019/2/22 0022 Exposed ISSUE
             XposedHelpers.findAndHookMethod(loginResponseClassName, classLoader, "getAdsList", new XC_MethodHook() {
                 @Override
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
@@ -52,23 +51,10 @@ public class ClearBootAdPlugin implements IPlugin {
             LogUtil.e("getAdsList Unknown Error!");
         }
 
-        /**
-         * 在com.mh.movie.core.mvp.ui.activity.SplashActivity中
-         * 替换a()方法，去除5s启动
-         */
-        try {
-            XposedHelpers.findAndHookMethod(splashActivityClassName, classLoader, "a", long.class, List.class, boolean.class, new XC_MethodReplacement() {
-                @Override
-                protected Object replaceHookedMethod(MethodHookParam methodHookParam) throws Throwable {
-                    //跳转MainActivity，并结束当前进程
-                    Class clazz = classLoader.loadClass(mainActivityClassName);
-                    HYHelper.startActivity((Activity) methodHookParam.thisObject, clazz);
-                    HYHelper.finish((Activity) methodHookParam.thisObject);
-                    return null;
-                }
-            });
-        } catch (Exception e) {
-            LogUtil.e("Boot 5s Unknown Error!");
-        }
+    }
+
+    @Override
+    public boolean isOpen() {
+        return XPrefUtils.getPref().getBoolean("ad_boot", true);
     }
 }

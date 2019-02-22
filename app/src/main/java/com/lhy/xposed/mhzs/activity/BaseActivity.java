@@ -5,6 +5,7 @@ import android.content.ContentResolver;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 
 import com.lhy.xposed.mhzs.R;
 import com.lhy.xposed.mhzs.helper.FileUtils;
@@ -57,14 +58,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onDestroy() {
+        super.onDestroy();
         setWorldReadable();
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onPause() {
+        super.onPause();
         setWorldReadable();
     }
 
@@ -82,6 +83,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
         }
     }
+
 
     /*************************************************************
      * EXP/VXP SUPPORT START
@@ -112,4 +114,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     /*************************************************************
      * EXP/VXP SUPPORT END
      * ***********************************************************/
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

@@ -6,8 +6,10 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.lhy.xposed.mhzs.helper.LogUtil;
+import com.lhy.xposed.mhzs.helper.XPrefUtils;
 
 import de.robv.android.xposed.XC_MethodHook;
+import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 
 /**
@@ -32,31 +34,37 @@ public class CustomMainInterfacePlugin implements IPlugin {
                     Class R$idClass = classLoader.loadClass(r$idClassName);
                     Activity mMainActivity = (Activity) param.thisObject;
 
-                    //第二个按钮
-                    try {
-                        int rlMainTVId = XposedHelpers.getStaticIntField(R$idClass, "rl_main_tv");
-                        RelativeLayout relativeLayout = mMainActivity.findViewById(rlMainTVId);
-                        relativeLayout.setVisibility(View.GONE);
-                    } catch (Exception e) {
-                        LogUtil.e("R.id.rl_main_tv Unknown Error!");
+                    if (XPrefUtils.getPref().getBoolean("tab2", false)) {
+                        //第二个按钮
+                        try {
+                            int rlMainTVId = XposedHelpers.getStaticIntField(R$idClass, "rl_main_tv");
+                            RelativeLayout relativeLayout = mMainActivity.findViewById(rlMainTVId);
+                            relativeLayout.setVisibility(View.GONE);
+                        } catch (Exception e) {
+                            LogUtil.e("R.id.rl_main_tv Unknown Error!");
+                        }
                     }
 
-                    //第三个按钮
-                    try {
-                        int rlMainTaskId = XposedHelpers.getStaticIntField(R$idClass, "rl_main_task");
-                        RelativeLayout relativeLayout = mMainActivity.findViewById(rlMainTaskId);
-                        relativeLayout.setVisibility(View.GONE);
-                    } catch (Exception e) {
-                        LogUtil.e("R.id.rl_main_task Unknown Error!");
+                    if (XPrefUtils.getPref().getBoolean("tab3", true)) {
+                        //第三个按钮
+                        try {
+                            int rlMainPartnerId = XposedHelpers.getStaticIntField(R$idClass, "rl_main_partner");
+                            RelativeLayout relativeLayout = mMainActivity.findViewById(rlMainPartnerId);
+                            relativeLayout.setVisibility(View.GONE);
+                        } catch (Exception e) {
+                            LogUtil.e("R.id.rl_main_partner Unknown Error!");
+                        }
                     }
 
-                    //第四个按钮
-                    try {
-                        int rlMainPartnerId = XposedHelpers.getStaticIntField(R$idClass, "rl_main_partner");
-                        RelativeLayout relativeLayout = mMainActivity.findViewById(rlMainPartnerId);
-                        relativeLayout.setVisibility(View.GONE);
-                    } catch (Exception e) {
-                        LogUtil.e("R.id.rl_main_partner Unknown Error!");
+                    if (XPrefUtils.getPref().getBoolean("tab4", false)) {
+                        //第四个按钮
+                        try {
+                            int rlMainTaskId = XposedHelpers.getStaticIntField(R$idClass, "rl_main_task");
+                            RelativeLayout relativeLayout = mMainActivity.findViewById(rlMainTaskId);
+                            relativeLayout.setVisibility(View.GONE);
+                        } catch (Exception e) {
+                            LogUtil.e("R.id.rl_main_task Unknown Error!");
+                        }
                     }
 
                     //                Field mListCheckBoxField = XposedHelpers.findField(classLoader.loadClass(mainActivityClassName), "q");
@@ -78,5 +86,10 @@ public class CustomMainInterfacePlugin implements IPlugin {
         } catch (Exception e) {
 
         }
+    }
+
+    @Override
+    public boolean isOpen() {
+        return true;
     }
 }

@@ -1,6 +1,7 @@
 package com.lhy.xposed.mhzs.plugin;
 
 import com.lhy.xposed.mhzs.helper.LogUtil;
+import com.lhy.xposed.mhzs.helper.XPrefUtils;
 
 import de.robv.android.xposed.XC_MethodReplacement;
 import de.robv.android.xposed.XposedBridge;
@@ -34,5 +35,10 @@ public class ClearPlayerAdPlugin implements IPlugin {
             LogUtil.e("hook f method Unknown Error!");
             XposedBridge.log(e);
         }
+    }
+
+    @Override
+    public boolean isOpen() {
+        return XPrefUtils.getPref().getBoolean("ad_player", true);
     }
 }

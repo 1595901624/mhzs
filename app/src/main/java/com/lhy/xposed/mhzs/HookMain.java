@@ -6,6 +6,7 @@ import com.lhy.xposed.mhzs.helper.Config;
 import com.lhy.xposed.mhzs.helper.LogUtil;
 import com.lhy.xposed.mhzs.helper.XPrefUtils;
 import com.lhy.xposed.mhzs.plugin.ClearBootAdPlugin;
+import com.lhy.xposed.mhzs.plugin.ClearFiveSecondsPlugin;
 import com.lhy.xposed.mhzs.plugin.ClearMainAdPlugin;
 import com.lhy.xposed.mhzs.plugin.ClearPlayerAdPlugin;
 import com.lhy.xposed.mhzs.plugin.CustomMainInterfacePlugin;
@@ -39,6 +40,7 @@ public class HookMain {
 
         //进入麻花领空,运行插件
         IPlugin[] iPlugins = new IPlugin[]{
+                new ClearFiveSecondsPlugin(),
                 new ClearBootAdPlugin(),
                 new ClearMainAdPlugin(),
                 new ClearPlayerAdPlugin(),
@@ -49,7 +51,8 @@ public class HookMain {
         };
 
         for (IPlugin iPlugin : iPlugins) {
-            iPlugin.run(classLoader);
+            if (iPlugin.isOpen())
+                iPlugin.run(classLoader);
         }
     }
 

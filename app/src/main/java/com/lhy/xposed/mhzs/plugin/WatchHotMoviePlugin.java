@@ -1,6 +1,7 @@
 package com.lhy.xposed.mhzs.plugin;
 
 import com.lhy.xposed.mhzs.helper.LogUtil;
+import com.lhy.xposed.mhzs.helper.XPrefUtils;
 
 import java.lang.reflect.Field;
 
@@ -111,5 +112,11 @@ public class WatchHotMoviePlugin implements IPlugin {
 //                return null;
 //            }
 //        });
+    }
+
+
+    @Override
+    public boolean isOpen() {
+        return XPrefUtils.getPref().getBoolean("wechat_share", true);
     }
 }
