@@ -1,20 +1,11 @@
 # 麻花助手（Xposed Plugin）
 
-麻花助手，这是一款Xposed插件，旨在净化麻花影视手机版。当前是功能还不是很完善，使用软件时注意**麻花影视
-所支持版本**，不支持 Exposed 和 Virtual Xposed 框架 ，EdXposed 未测试。
+麻花助手，这是一款Xposed插件，旨在净化麻花影视手机版。当前是功能还不是很完善，支持**麻花影视
+手机版2.5.0**版本，不支持 Exposed 和 Virtual Xposed 框架 ，EdXposed 未测试。
 
 ## 更新日志
 
-<!--* 麻花助手 0.6 Beta 2019/02/26 [仅支持麻花影视v1920-2.6.0版本] -->
-    <!--1. 去除启动页广告；-->
-    <!--2. 去除启动页5s倒计时；-->
-    <!--3. 去除启动页历史广告显示；-->
-    <!--4. 去除“推荐”、“电影”、“电视剧”页面中存在的广告；-->
-    <!--5. 去除视频播放页面的广告；-->
-    <!--6. 为助手添加图标；-->
-    <!--7. 为助手添加设置菜单。  -->
-
-* 麻花助手 0.5.1 Beta 2019/02/22 [仅支持麻花影视v1920-2.5.0版本] 
+* 麻花助手 0.5.1 Beta 2019/02/22
     1. 去除启动页广告；
     2. 去除启动页5s倒计时；
     3. 去除启动页历史广告显示；
@@ -32,15 +23,11 @@
     
 ## 工作进度
 
-* 2019/02/26
-    1. 提升助手稳定性；
-    2. 支持版本v1920-2.6.0,版本号叠至0.6 beta（未打包）。
-
 * 2019/02/22
     1. 更新图标；
     2. 添加设置菜单；
     3. 提升助手稳定性；
-    4. 支持版本v1920-2.5.0,版本号叠至0.5.1 beta。
+    4. 版本号叠至0.5.1 beta。
 
 * 2019/02/18
     1. 自定义主界面按钮；
@@ -84,11 +71,11 @@
 
 ## 捐赠
 
-<!--<figure class="half">-->
-    <!--<img src="https://github.com/1595901624/mhzs/blob/master/alipayc.jpg?raw=true">-->
-    <!--&nbsp;-->
-    <!--<img src="https://github.com/1595901624/mhzs/blob/master/wechatc.jpg?raw=true">-->
-<!--</figure>-->
+<figure class="half">
+    <img src="https://github.com/1595901624/mhzs/blob/master/alipayc.jpg?raw=true">
+    &nbsp;&nbsp;
+    <img src="https://github.com/1595901624/mhzs/blob/master/wechatc.jpg?raw=true">
+</figure>
 <!--![支付宝捐赠](https://github.com/1595901624/mhzs/blob/master/alipayc.jpg?raw=true)-->
 
 <!--![微信捐赠](https://github.com/1595901624/mhzs/blob/master/wechatc.jpg?raw=true)-->
