@@ -1,7 +1,8 @@
 # 麻花助手（Xposed Plugin）
 
 麻花助手，这是一款Xposed插件，旨在净化麻花影视手机版。当前是功能还不是很完善，支持**麻花影视
-手机版2.5.0**版本，不支持 Exposed 和 Virtual Xposed 框架 ，EdXposed 未测试。
+手机版2.5.0**版本，不支持**麻花影视
+手机版2.6.0**版本，不支持 Exposed 和 Virtual Xposed 框架 ，EdXposed 未测试。
 
 ## 更新日志
 
