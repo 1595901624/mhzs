@@ -11,6 +11,7 @@
         <SwitchPreferenceCompat
             android:defaultValue="true"
             android:key="ad_boot"
+            android:summary="此选项与EXP和VXP冲突"
             android:title="去除启动页广告"
             app:iconSpaceReserved="false" />
 

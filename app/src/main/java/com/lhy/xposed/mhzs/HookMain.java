@@ -44,7 +44,7 @@ public class HookMain {
                 new ClearBootAdPlugin(),
                 new ClearMainAdPlugin(),
                 new ClearPlayerAdPlugin(),
-                new WatchHotMoviePlugin(),
+//                new WatchHotMoviePlugin(),
 //                new InfiniteCachePlugin(),
                 new VideoURLPlugin(),
                 new CustomMainInterfacePlugin()

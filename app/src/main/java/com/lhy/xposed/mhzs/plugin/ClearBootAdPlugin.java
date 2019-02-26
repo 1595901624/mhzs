@@ -22,11 +22,13 @@ public class ClearBootAdPlugin implements IPlugin {
     public void run(final ClassLoader classLoader) throws Throwable {
         /**
          * 禁止加载广告历史记录
+         *
+         * 此变量名版本更新可能会改变
          */
         try {
-            XposedHelpers.setStaticObjectField(classLoader.loadClass(constantsClassName), "t", "splash_no_ad_list");
+            XposedHelpers.setStaticObjectField(classLoader.loadClass(constantsClassName), "w", "splash_no_ad_list");
         } catch (Exception e) {
-            LogUtil.e("splash_no_ad_list Unknown Error!");
+            LogUtil.e("splash_ad_list Unknown Error!");
             XposedBridge.log(e);
         }
         /**

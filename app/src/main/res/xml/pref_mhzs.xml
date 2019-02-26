@@ -58,11 +58,11 @@
             android:summary="自动进入主界面"
             app:iconSpaceReserved="false" />
 
-        <SwitchPreferenceCompat
-            android:defaultValue="true"
-            android:key="wechat_share"
-            android:title="假装微信分享"
-            app:iconSpaceReserved="false" />
+        <!--<SwitchPreferenceCompat-->
+            <!--android:defaultValue="true"-->
+            <!--android:key="wechat_share"-->
+            <!--android:title="假装微信分享"-->
+            <!--app:iconSpaceReserved="false" />-->
     </PreferenceCategory>
 
 </PreferenceScreen>

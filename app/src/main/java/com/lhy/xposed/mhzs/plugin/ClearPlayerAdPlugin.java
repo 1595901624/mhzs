@@ -21,18 +21,20 @@ public class ClearPlayerAdPlugin implements IPlugin {
     public void run(ClassLoader classLoader) throws Throwable {
         /**
          * 在com.mh.movie.core.mvp.presenter.player.PlayerPresenter中
-         * 替换f()方法，去除播放页面的广告
+         * 替换g()方法，去除播放页面的广告 -BootadsListBean-
+         *
+         * 此变量名版本更新可能会改变
          */
         try {
-            XposedHelpers.findAndHookMethod(playerPresenterClassName, classLoader, "f", int.class, new XC_MethodReplacement() {
+            XposedHelpers.findAndHookMethod(playerPresenterClassName, classLoader, "g", int.class, new XC_MethodReplacement() {
                 @Override
                 protected Object replaceHookedMethod(MethodHookParam methodHookParam) throws Throwable {
-                    LogUtil.e("hook f method!");
+                    LogUtil.e("hook g method!");
                     return null;
                 }
             });
         } catch (Exception e) {
-            LogUtil.e("hook f method Unknown Error!");
+            LogUtil.e("hook g method Unknown Error!");
             XposedBridge.log(e);
         }
     }
