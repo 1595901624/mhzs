@@ -17,6 +17,7 @@ import de.robv.android.xposed.XposedHelpers;
  * @author lhy
  * @time 2019年2月17日12:18:26
  */
+@Deprecated
 public class WatchHotMoviePlugin implements IPlugin {
 
 //    private final String detailResponseClassName = "com.mh.movie.core.mvp.model.entity.response.DetailResponse$VideoListBean";

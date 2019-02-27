@@ -11,8 +11,9 @@ import com.lhy.xposed.mhzs.plugin.ClearMainAdPlugin;
 import com.lhy.xposed.mhzs.plugin.ClearPlayerAdPlugin;
 import com.lhy.xposed.mhzs.plugin.CustomMainInterfacePlugin;
 import com.lhy.xposed.mhzs.plugin.IPlugin;
+import com.lhy.xposed.mhzs.plugin.InfiniteCachePlugin;
+import com.lhy.xposed.mhzs.plugin.NoUpdatePlugin;
 import com.lhy.xposed.mhzs.plugin.VideoURLPlugin;
-import com.lhy.xposed.mhzs.plugin.WatchHotMoviePlugin;
 
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedHelpers;
@@ -47,7 +48,8 @@ public class HookMain {
 //                new WatchHotMoviePlugin(),
 //                new InfiniteCachePlugin(),
                 new VideoURLPlugin(),
-                new CustomMainInterfacePlugin()
+                new CustomMainInterfacePlugin(),
+                new NoUpdatePlugin()
         };
 
         for (IPlugin iPlugin : iPlugins) {
