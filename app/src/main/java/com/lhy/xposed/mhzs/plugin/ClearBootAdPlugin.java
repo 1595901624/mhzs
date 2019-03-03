@@ -25,28 +25,19 @@ public class ClearBootAdPlugin implements IPlugin {
          *
          * 此变量名版本更新可能会改变
          */
-        try {
-            XposedHelpers.setStaticObjectField(classLoader.loadClass(constantsClassName), "w", "splash_no_ad_list");
-        } catch (Exception e) {
-            LogUtil.e("splash_ad_list Unknown Error!");
-            XposedBridge.log(e);
-        }
+        XposedHelpers.setStaticObjectField(classLoader.loadClass(constantsClassName), "w", "splash_no_ad_list");
         /**
          * 将AdList设置为空
          */
-        try {
-            // TODO: 2019/2/22 0022 Exposed/VXP ISSUE--TOO SHORT METHOD!!!
-            XposedHelpers.findAndHookMethod(loginResponseClassName, classLoader, "getAdsList", new XC_MethodHook() {
-                @Override
-                protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                    super.afterHookedMethod(param);
-                    LogUtil.e("hook getAdsList null!");
-                    param.setResult(null);
-                }
-            });
-        } catch (Throwable throwable) {
-            LogUtil.e("getAdsList Unknown Error!");
-        }
+        // TODO: 2019/2/22 0022 Exposed/VXP ISSUE--TOO SHORT METHOD!!!
+        XposedHelpers.findAndHookMethod(loginResponseClassName, classLoader, "getAdsList", new XC_MethodHook() {
+            @Override
+            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                super.afterHookedMethod(param);
+                LogUtil.e("hook getAdsList null!");
+                param.setResult(null);
+            }
+        });
 
     }
 

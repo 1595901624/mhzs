@@ -11,7 +11,6 @@ import com.lhy.xposed.mhzs.plugin.ClearMainAdPlugin;
 import com.lhy.xposed.mhzs.plugin.ClearPlayerAdPlugin;
 import com.lhy.xposed.mhzs.plugin.CustomMainInterfacePlugin;
 import com.lhy.xposed.mhzs.plugin.IPlugin;
-import com.lhy.xposed.mhzs.plugin.InfiniteCachePlugin;
 import com.lhy.xposed.mhzs.plugin.NoUpdatePlugin;
 import com.lhy.xposed.mhzs.plugin.VideoURLPlugin;
 
@@ -21,6 +20,17 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
 
 public class HookMain {
+    private IPlugin[] iPlugins = new IPlugin[]{
+            new ClearFiveSecondsPlugin(),
+            new ClearBootAdPlugin(),
+            new ClearMainAdPlugin(),
+            new ClearPlayerAdPlugin(),
+//                new WatchHotMoviePlugin(),
+//                new InfiniteCachePlugin(),
+            new VideoURLPlugin(),
+            new CustomMainInterfacePlugin(),
+            new NoUpdatePlugin()
+    };
 
     /**
      * 主函数
@@ -40,18 +50,6 @@ public class HookMain {
         final ClassLoader classLoader = context.getClassLoader();
 
         //进入麻花领空,运行插件
-        IPlugin[] iPlugins = new IPlugin[]{
-                new ClearFiveSecondsPlugin(),
-                new ClearBootAdPlugin(),
-                new ClearMainAdPlugin(),
-                new ClearPlayerAdPlugin(),
-//                new WatchHotMoviePlugin(),
-//                new InfiniteCachePlugin(),
-                new VideoURLPlugin(),
-                new CustomMainInterfacePlugin(),
-                new NoUpdatePlugin()
-        };
-
         for (IPlugin iPlugin : iPlugins) {
             if (iPlugin.isOpen())
                 iPlugin.run(classLoader);

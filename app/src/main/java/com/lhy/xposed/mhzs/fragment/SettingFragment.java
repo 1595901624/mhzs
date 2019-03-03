@@ -24,12 +24,13 @@ import com.lhy.xposed.mhzs.helper.ToastUtils;
 import java.io.File;
 import java.io.InputStream;
 
-public class SettingFragment extends PreferenceFragmentCompat {
+public class SettingFragment extends BasePreferenceFragment {
     private PreferenceGroup pcDetailPreferenceGroup;
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
         addPreferencesFromResource(R.xml.pref_mhzs);
+        setWorldReadable();
         pcDetailPreferenceGroup = findPreference("pc_detail");
 
         SharedPreferences sp = getPreferenceManager().getSharedPreferences();

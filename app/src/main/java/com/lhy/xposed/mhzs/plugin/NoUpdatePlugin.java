@@ -1,6 +1,7 @@
 package com.lhy.xposed.mhzs.plugin;
 
 import com.lhy.xposed.mhzs.helper.LogUtil;
+import com.lhy.xposed.mhzs.helper.XPrefUtils;
 
 import java.lang.reflect.Method;
 
@@ -9,6 +10,8 @@ import de.robv.android.xposed.XposedHelpers;
 
 /**
  * 去除主界面提示升级的对话框
+ * <p>
+ * 该插件全版本通用
  *
  * @author lhy
  * @time 2019年2月27日16:22:31
@@ -53,6 +56,6 @@ public class NoUpdatePlugin implements IPlugin {
 
     @Override
     public boolean isOpen() {
-        return true;
+        return XPrefUtils.getPref().getBoolean("no_update", false);
     }
 }

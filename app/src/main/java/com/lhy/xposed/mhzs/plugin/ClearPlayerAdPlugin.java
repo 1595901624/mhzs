@@ -25,18 +25,13 @@ public class ClearPlayerAdPlugin implements IPlugin {
          *
          * 此变量名版本更新可能会改变
          */
-        try {
-            XposedHelpers.findAndHookMethod(playerPresenterClassName, classLoader, "g", int.class, new XC_MethodReplacement() {
-                @Override
-                protected Object replaceHookedMethod(MethodHookParam methodHookParam) throws Throwable {
-                    LogUtil.e("hook g method!");
-                    return null;
-                }
-            });
-        } catch (Exception e) {
-            LogUtil.e("hook g method Unknown Error!");
-            XposedBridge.log(e);
-        }
+        XposedHelpers.findAndHookMethod(playerPresenterClassName, classLoader, "g", int.class, new XC_MethodReplacement() {
+            @Override
+            protected Object replaceHookedMethod(MethodHookParam methodHookParam) throws Throwable {
+                LogUtil.e("hook g method!");
+                return null;
+            }
+        });
     }
 
     @Override

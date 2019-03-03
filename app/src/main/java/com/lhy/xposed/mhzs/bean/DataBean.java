@@ -2,6 +2,11 @@ package com.lhy.xposed.mhzs.bean;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * DataBean
+ * 麻花影视 2.5.0之前
+ */
+@Deprecated
 public class DataBean {
 
     private String m3u8PlayUrl;

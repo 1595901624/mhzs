@@ -57,6 +57,20 @@
             android:summary="自动进入主界面"
             app:iconSpaceReserved="false" />
 
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="no_update"
+            android:title="去除更新"
+            android:summary="去除主界面升级提示"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="video_url"
+            android:title="获取视频地址（测试功能）"
+            android:summary="开启前请参阅使用帮助"
+            app:iconSpaceReserved="false" />
+
         <!--<SwitchPreferenceCompat-->
             <!--android:defaultValue="true"-->
             <!--android:key="wechat_share"-->

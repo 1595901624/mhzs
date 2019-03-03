@@ -23,8 +23,8 @@
             android:textSize="20sp" />-->
     </androidx.appcompat.widget.Toolbar>
 
+
     <RelativeLayout
-        android:padding="16px"
         android:id="@+id/container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,5 +32,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></RelativeLayout>
+
 
 </LinearLayout>

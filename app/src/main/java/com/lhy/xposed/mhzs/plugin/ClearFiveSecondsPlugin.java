@@ -23,20 +23,16 @@ public class ClearFiveSecondsPlugin implements IPlugin {
          *
          * 此变量名版本更新可能会改变
          */
-        try {
-            XposedHelpers.findAndHookMethod(splashActivityClassName, classLoader, "a", long.class, List.class, boolean.class, new XC_MethodReplacement() {
-                @Override
-                protected Object replaceHookedMethod(MethodHookParam methodHookParam) throws Throwable {
-                    //跳转MainActivity，并结束当前进程
-                    Class clazz = classLoader.loadClass(mainActivityClassName);
-                    HYHelper.startActivity((Activity) methodHookParam.thisObject, clazz);
-                    HYHelper.finish((Activity) methodHookParam.thisObject);
-                    return null;
-                }
-            });
-        } catch (Exception e) {
-            LogUtil.e("Boot 5s Unknown Error!");
-        }
+        XposedHelpers.findAndHookMethod(splashActivityClassName, classLoader, "a", long.class, List.class, boolean.class, new XC_MethodReplacement() {
+            @Override
+            protected Object replaceHookedMethod(MethodHookParam methodHookParam) throws Throwable {
+                //跳转MainActivity，并结束当前进程
+                Class clazz = classLoader.loadClass(mainActivityClassName);
+                HYHelper.startActivity((Activity) methodHookParam.thisObject, clazz);
+                HYHelper.finish((Activity) methodHookParam.thisObject);
+                return null;
+            }
+        });
     }
 
     @Override

@@ -3,6 +3,11 @@ package com.lhy.xposed.mhzs.bean;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * M3u8FormatBean
+ * 麻花影视 2.5.0之前
+ */
+@Deprecated
 public class M3u8FormatBean {
     @SerializedName(value = "1080P")
     private String _$1080P;
