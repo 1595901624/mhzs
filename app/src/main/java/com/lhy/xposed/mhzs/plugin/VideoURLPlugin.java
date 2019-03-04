@@ -83,7 +83,7 @@ public class VideoURLPlugin implements IPlugin {
                     @Override
                     public void onClick(View view) {
                         if ($360PPlayUrl != null) {
-                            ToastUtils.toast(activity, $360PPlayUrl + "--");
+                            ToastUtils.toast(activity, $360PPlayUrl);
                             ClipData clipData = ClipData.newPlainText(null, $360PPlayUrl);
                             clipboard.setPrimaryClip(clipData);
                         } else
@@ -97,7 +97,7 @@ public class VideoURLPlugin implements IPlugin {
                     @Override
                     public void onClick(View view) {
                         if ($480PPlayUrl != null) {
-                            ToastUtils.toast(activity, $480PPlayUrl + "--");
+                            ToastUtils.toast(activity, $480PPlayUrl);
                             ClipData clipData = ClipData.newPlainText(null, $480PPlayUrl);
                             clipboard.setPrimaryClip(clipData);
                         } else
@@ -111,7 +111,7 @@ public class VideoURLPlugin implements IPlugin {
                     @Override
                     public void onClick(View view) {
                         if ($720PPlayUrl != null) {
-                            ToastUtils.toast(activity, $720PPlayUrl + "--");
+                            ToastUtils.toast(activity, $720PPlayUrl);
                             ClipData clipData = ClipData.newPlainText(null, $720PPlayUrl);
                             clipboard.setPrimaryClip(clipData);
                         } else {
@@ -126,7 +126,7 @@ public class VideoURLPlugin implements IPlugin {
                     @Override
                     public void onClick(View view) {
                         if ($1080PPlayUrl != null) {
-                            ToastUtils.toast(activity, $1080PPlayUrl + "--");
+                            ToastUtils.toast(activity, $1080PPlayUrl);
                             ClipData clipData = ClipData.newPlainText(null, $1080PPlayUrl);
                             clipboard.setPrimaryClip(clipData);
                         } else
@@ -214,7 +214,7 @@ public class VideoURLPlugin implements IPlugin {
      * @throws ClassNotFoundException
      */
     private void parseVideoUrl(ClassLoader classLoader) throws ClassNotFoundException {
-        final Class playerPresenterClazz = classLoader.loadClass(playerPresenterClassName);
+//        final Class playerPresenterClazz = classLoader.loadClass(playerPresenterClassName);
         final Class videoAddressResponseClazz = classLoader.loadClass(videoAddressResponseClassName);
         final Class m3u8FormatBeanClazz = classLoader.loadClass(m3u8FormatBeanClassName);
         XposedHelpers.findAndHookMethod(playerPresenterClassName, classLoader, "a",
