@@ -45,8 +45,7 @@ public class HookMain {
         }
 
         LogUtil.e("Plugin is open!");
-
-        final Context context = (Context) param.args[0];
+        Context context = (Context) param.args[0];
         final ClassLoader classLoader = context.getClassLoader();
 
         //进入麻花领空,运行插件
@@ -63,28 +62,19 @@ public class HookMain {
      * @param loadPackageParam
      */
     public void handleLoadPackage4release(final XC_LoadPackage.LoadPackageParam loadPackageParam) {
-        if (!Config.HOOK_APPLICATION_PACKAGE_NAME.equals(loadPackageParam.processName))
+        if (!Config.HOOK_APPLICATION_PACKAGE_NAME.equals(loadPackageParam.packageName))
             return;
 
         XposedHelpers.findAndHookMethod("com.stub.StubApp", loadPackageParam.classLoader,
-                "getOrigApplicationContext", Context.class, new XC_MethodHook() {
+                "attachBaseContext", Context.class, new XC_MethodHook() {
                     @Override
                     protected void afterHookedMethod(XC_MethodHook.MethodHookParam param) throws Throwable {
                         /**
                          * 获取360加固的CLASSLOADER
                          *
                          */
-                        if (Config.IS_FIRST_RUN) {
-                            //加锁防止多次运行
-                            synchronized (HookMain.class) {
-                                if (Config.IS_FIRST_RUN) {
-                                    Config.IS_FIRST_RUN = false;
-                                    //主函数
-                                    main(param);
-                                }
-                            }
-                        }
-
+                        //主函数
+                        main(param);
                     }
                 });
     }
