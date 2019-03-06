@@ -56,7 +56,7 @@ public class HookMain {
     }
 
     public void handleLoadPackage4release(final XC_LoadPackage.LoadPackageParam loadPackageParam) {
-        if (!Config.HOOK_APPLICATION_PACKAGE_NAME.equals(loadPackageParam.packageName))
+        if (!Config.HOOK_APPLICATION_PACKAGE_NAME.contains(loadPackageParam.packageName))
             return;
 
         XposedHelpers.findAndHookMethod("com.stub.StubApp", loadPackageParam.classLoader,
