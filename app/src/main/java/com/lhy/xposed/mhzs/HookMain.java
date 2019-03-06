@@ -55,12 +55,6 @@ public class HookMain {
         }
     }
 
-
-    /**
-     * 只运行一次
-     *
-     * @param loadPackageParam
-     */
     public void handleLoadPackage4release(final XC_LoadPackage.LoadPackageParam loadPackageParam) {
         if (!Config.HOOK_APPLICATION_PACKAGE_NAME.equals(loadPackageParam.packageName))
             return;
