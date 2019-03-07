@@ -2,7 +2,6 @@ package com.lhy.xposed.mhzs;
 
 import android.content.Context;
 
-import com.lhy.xposed.mhzs.helper.Config;
 import com.lhy.xposed.mhzs.helper.LogUtil;
 import com.lhy.xposed.mhzs.helper.XPrefUtils;
 import com.lhy.xposed.mhzs.plugin.ClearBootAdPlugin;

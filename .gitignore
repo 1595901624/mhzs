@@ -9,3 +9,7 @@
 /build
 /captures
 .externalNativeBuild
+/.idea
+DEV.md
+mhzs.zip
+/app/release
