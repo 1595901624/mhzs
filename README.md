@@ -42,11 +42,11 @@
 
 ## 捐赠
 
-<!--<figure class="half">-->
-    <!--<img src="https://github.com/1595901624/mhzs/blob/master/alipayc.jpg?raw=true">-->
-    <!--&nbsp;-->
-    <!--<img src="https://github.com/1595901624/mhzs/blob/master/wechatc.jpg?raw=true">-->
-<!--</figure>-->
+<figure class="half">
+    <img src="https://github.com/1595901624/mhzs/blob/master/alipayc.jpg?raw=true">
+    &nbsp;
+    <img src="https://github.com/1595901624/mhzs/blob/master/wechatc.jpg?raw=true">
+</figure>
 
 ##### 捐赠名单
 
