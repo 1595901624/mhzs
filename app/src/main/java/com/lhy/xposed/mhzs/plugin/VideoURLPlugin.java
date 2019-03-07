@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.lhy.xposed.mhzs.helper.Constant;
 import com.lhy.xposed.mhzs.helper.LogUtil;
 import com.lhy.xposed.mhzs.bean.VideoInfoBean;
 import com.lhy.xposed.mhzs.helper.ToastUtils;
@@ -40,9 +41,7 @@ import de.robv.android.xposed.XposedHelpers;
 public class VideoURLPlugin implements IPlugin {
     private final String resultStrHandleSubscriberClassName = "com.mh.movie.core.mvp.model.a.b";
     private final String aesUtilClassName = "com.mh.movie.core.mvp.ui.utils.AesUtil";
-    private final String playerActvityClassName = "com.mh.movie.core.mvp.ui.activity.player.PlayerActivity";
     private final String r$idClassName = "com.mh.movie.core.R$id";
-    private final String playerPresenterClassName = "com.mh.movie.core.mvp.presenter.player.PlayerPresenter";
     private final String videoAddressResponseClassName = "com.mh.movie.core.mvp.model.entity.response.VideoAddressResponse";
     private final String m3u8FormatBeanClassName = "com.mh.movie.core.mvp.model.entity.M3u8FormatBean";
 
@@ -66,7 +65,7 @@ public class VideoURLPlugin implements IPlugin {
         Class r$idClazz = classLoader.loadClass(r$idClassName);
         final int clPlayerRootId = XposedHelpers.getStaticIntField(r$idClazz, "cl_player_root");
         final int rlPlayerIntroduceId = XposedHelpers.getStaticIntField(r$idClazz, "rl_player_introduce");
-        XposedHelpers.findAndHookMethod(playerActvityClassName, classLoader, "Z", new XC_MethodHook() {
+        XposedHelpers.findAndHookMethod(Constant.act.$PlayerActivity, classLoader, "Z", new XC_MethodHook() {
             @Override
             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                 super.beforeHookedMethod(param);
@@ -156,6 +155,51 @@ public class VideoURLPlugin implements IPlugin {
     }
 
     /**
+     * 解析视频真实地址(适用于麻花影视2.6.0后)
+     * /api/app/video/ver2/user/clickPlayVideo_2_5/
+     *
+     * @param classLoader
+     * @throws ClassNotFoundException
+     */
+    private void parseVideoUrl(ClassLoader classLoader) throws ClassNotFoundException {
+        final Class videoAddressResponseClazz = classLoader.loadClass(videoAddressResponseClassName);
+        final Class m3u8FormatBeanClazz = classLoader.loadClass(m3u8FormatBeanClassName);
+        XposedHelpers.findAndHookMethod(Constant.prst.$PlayerPresenter, classLoader, "a",
+                videoAddressResponseClazz, int.class, Integer.class, String.class, new XC_MethodHook() {
+                    @Override
+                    protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+                        super.beforeHookedMethod(param);
+//                        LogUtil.e(param.args[0] + "");
+                        Object videoAddressResponseObject = param.args[0];
+                        Method getM3u8PlayUrlMethod = XposedHelpers.findMethodBestMatch(videoAddressResponseClazz, "getM3u8PlayUrl");
+                        String host = (String) getM3u8PlayUrlMethod.invoke(videoAddressResponseObject);
+
+                        Method getM3u8FormatMethod = XposedHelpers.findMethodBestMatch(videoAddressResponseClazz, "getM3u8Format");
+                        Object M3u8FormatObject = getM3u8FormatMethod.invoke(videoAddressResponseObject);
+                        Method getM3u8FormatUrlMethod = XposedHelpers.findMethodBestMatch(m3u8FormatBeanClazz, "getM3u8Format", int.class);
+                        $360PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 0);
+                        $480PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 1);
+                        $720PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 2);
+                        $1080PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 3);
+
+                        $1080PPlayUrl = $1080PPlayUrl == null ? "无当前清晰度播放地址" : host + $1080PPlayUrl;
+                        $720PPlayUrl = $720PPlayUrl == null ? "无当前清晰度播放地址" : host + $720PPlayUrl;
+                        $480PPlayUrl = $480PPlayUrl == null ? "无当前清晰度播放地址" : host + $480PPlayUrl;
+                        $360PPlayUrl = $360PPlayUrl == null ? "无当前清晰度播放地址" : host + $360PPlayUrl;
+
+                        LogUtil.e("1080  " + $1080PPlayUrl);
+                        LogUtil.e("720  " + $720PPlayUrl);
+                        LogUtil.e("480  " + $480PPlayUrl);
+                        LogUtil.e("360  " + $360PPlayUrl);
+
+                    }
+
+                });
+    }
+
+    /**
+     * Deprecated
+     * <p>
      * 解析视频真实地址(适用于麻花影视2.5.0前)
      * /api/app/video/ver2/user/clickPlayVideo_2_2/
      *
@@ -197,65 +241,9 @@ public class VideoURLPlugin implements IPlugin {
                 }
 
             }
-
-            @Override
-            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                super.afterHookedMethod(param);
-//                LogUtil.e(param.args[0] + "--after");
-            }
         });
     }
 
-    /**
-     * 解析视频真实地址(适用于麻花影视2.6.0后)
-     * /api/app/video/ver2/user/clickPlayVideo_2_5/
-     *
-     * @param classLoader
-     * @throws ClassNotFoundException
-     */
-    private void parseVideoUrl(ClassLoader classLoader) throws ClassNotFoundException {
-//        final Class playerPresenterClazz = classLoader.loadClass(playerPresenterClassName);
-        final Class videoAddressResponseClazz = classLoader.loadClass(videoAddressResponseClassName);
-        final Class m3u8FormatBeanClazz = classLoader.loadClass(m3u8FormatBeanClassName);
-        XposedHelpers.findAndHookMethod(playerPresenterClassName, classLoader, "a",
-                videoAddressResponseClazz, int.class, Integer.class, String.class, new XC_MethodHook() {
-                    @Override
-                    protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-                        super.beforeHookedMethod(param);
-//                        LogUtil.e(param.args[0] + "");
-                        Object videoAddressResponseObject = param.args[0];
-                        Method getM3u8PlayUrlMethod = XposedHelpers.findMethodBestMatch(videoAddressResponseClazz, "getM3u8PlayUrl");
-                        String host = (String) getM3u8PlayUrlMethod.invoke(videoAddressResponseObject);
-
-                        Method getM3u8FormatMethod = XposedHelpers.findMethodBestMatch(videoAddressResponseClazz, "getM3u8Format");
-                        Object M3u8FormatObject = getM3u8FormatMethod.invoke(videoAddressResponseObject);
-                        Method getM3u8FormatUrlMethod = XposedHelpers.findMethodBestMatch(m3u8FormatBeanClazz, "getM3u8Format", int.class);
-                        $360PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 0);
-                        $480PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 1);
-                        $720PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 2);
-                        $1080PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 3);
-
-                        $1080PPlayUrl = $1080PPlayUrl == null ? "无当前清晰度播放地址" : host + $1080PPlayUrl;
-                        $720PPlayUrl = $720PPlayUrl == null ? "无当前清晰度播放地址" : host + $720PPlayUrl;
-                        $480PPlayUrl = $480PPlayUrl == null ? "无当前清晰度播放地址" : host + $480PPlayUrl;
-                        $360PPlayUrl = $360PPlayUrl == null ? "无当前清晰度播放地址" : host + $360PPlayUrl;
-
-                        LogUtil.e("1080  " + $1080PPlayUrl);
-                        LogUtil.e("720  " + $720PPlayUrl);
-                        LogUtil.e("480  " + $480PPlayUrl);
-                        LogUtil.e("360  " + $360PPlayUrl);
-
-                    }
-
-                    @Override
-                    protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                        super.afterHookedMethod(param);
-//                        Field videoAddressResponseField = XposedHelpers.findField(playerPresenterClazz, "L");
-//                        videoAddressResponseField.setAccessible(true);
-//                        LogUtil.e(videoAddressResponseField.get(param.thisObject) + "---");
-                    }
-                });
-    }
 
     @Override
     public boolean isOpen() {

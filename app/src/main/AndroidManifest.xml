@@ -17,7 +17,7 @@
             android:value="true" />
         <meta-data
             android:name="xposeddescription"
-            android:value="支持麻花影视2.6.0和2.6.1" />
+            android:value="一款开源的净化麻花影视的插件，支持麻花影视2.6.1" />
         <meta-data
             android:name="xposedminversion"
             android:value="54" />

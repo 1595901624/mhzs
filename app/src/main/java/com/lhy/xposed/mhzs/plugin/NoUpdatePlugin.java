@@ -17,7 +17,6 @@ import de.robv.android.xposed.XposedHelpers;
  * @time 2019年2月27日16:22:31
  */
 public class NoUpdatePlugin implements IPlugin {
-    private final String mainActivityClassName = "com.mh.movie.core.mvp.ui.activity.main.MainActivity";
     private final String channelResponseClassName = "com.mh.movie.core.mvp.model.entity.response.ChannelResponse";
 
     @Override
@@ -25,7 +24,7 @@ public class NoUpdatePlugin implements IPlugin {
         /**
          * 方法1：直接返回null
          */
-        // TODO: 2019/2/27 0027 不支持EXP/VXP
+        // TODO: 2019/2/27 0027 与 EXP/VXP 可能会冲突
         XposedHelpers.findAndHookMethod(channelResponseClassName, classLoader, "getUrl", new XC_MethodHook() {
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {

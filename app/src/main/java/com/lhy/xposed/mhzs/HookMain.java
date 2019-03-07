@@ -8,6 +8,7 @@ import com.lhy.xposed.mhzs.helper.XPrefUtils;
 import com.lhy.xposed.mhzs.plugin.ClearBootAdPlugin;
 import com.lhy.xposed.mhzs.plugin.ClearFiveSecondsPlugin;
 import com.lhy.xposed.mhzs.plugin.ClearMainAdPlugin;
+import com.lhy.xposed.mhzs.plugin.ClearMarqueePlugin;
 import com.lhy.xposed.mhzs.plugin.ClearPlayerAdPlugin;
 import com.lhy.xposed.mhzs.plugin.CustomMainInterfacePlugin;
 import com.lhy.xposed.mhzs.plugin.IPlugin;
@@ -25,8 +26,7 @@ public class HookMain {
             new ClearBootAdPlugin(),
             new ClearMainAdPlugin(),
             new ClearPlayerAdPlugin(),
-//                new WatchHotMoviePlugin(),
-//                new InfiniteCachePlugin(),
+            new ClearMarqueePlugin(),
             new VideoURLPlugin(),
             new CustomMainInterfacePlugin(),
             new NoUpdatePlugin()
@@ -56,8 +56,6 @@ public class HookMain {
     }
 
     public void handleLoadPackage4release(final XC_LoadPackage.LoadPackageParam loadPackageParam) {
-        if (!Config.HOOK_APPLICATION_PACKAGE_NAME.equals(loadPackageParam.packageName))
-            return;
 
         XposedHelpers.findAndHookMethod("com.stub.StubApp", loadPackageParam.classLoader,
                 "attachBaseContext", Context.class, new XC_MethodHook() {

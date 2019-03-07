@@ -1,9 +1,6 @@
 package com.lhy.xposed.mhzs;
 
-import android.util.Log;
-
 import com.lhy.xposed.mhzs.helper.Config;
-import com.lhy.xposed.mhzs.helper.LogUtil;
 
 import java.io.File;
 import java.lang.reflect.Method;
@@ -18,11 +15,10 @@ public class HookLoader implements IXposedHookLoadPackage {
 
     @Override
     public void handleLoadPackage(final XC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
-        if (!Config.HOOK_APPLICATION_PACKAGE_NAME.equals(loadPackageParam.packageName))
+        if (!Config.HOOK_APPLICATION_PACKAGE_NAME.contains(loadPackageParam.packageName))
             return;
 
         try {
-            LogUtil.e("123123");
             //在发布时，直接调用即可。
             if (!BuildConfig.DEBUG) {
                 HookMain hookMain = new HookMain();

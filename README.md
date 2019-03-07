@@ -1,49 +1,14 @@
 # 麻花助手（Xposed Plugin）
 
 麻花助手，这是一款Xposed插件，旨在净化麻花影视手机版。当前是功能还不是很完善，使用软件时注意**助手所支持的麻花影视
- 版本支持**，**支持 EdXposed 框架**，不支持 Exposed 框架，不支持 Virtual Xposed 框架。
+ 版本支持**，现已**支持 EdXposed 框架**，**支持太极（Tai-Chi）框架** ，Virtual Xposed 框架不稳定。
  目前插件在逍遥安卓模拟器4.4/5.1/7.1，均测试成功.
 
 ## 更新日志
 
-* 麻花助手 0.6.5 Beta 2019/03/05 [支持官网2.6.1版本]
-    1. 提升稳定性；
-    2. 支持Edxposed框架。
-    
-* 麻花助手 0.6.4 Beta 2019/03/04 [支持2.6.X版本]
-    1. 提升稳定性。
-
-* 麻花助手 0.6.2 Beta 2019/03/03 [支持2.6.X版本]
-    1. 去除启动页广告；
-    2. 去除启动页5s倒计时；
-    3. 去除启动页历史广告显示；
-    4. 去除“推荐”、“电影”、“电视剧”页面中存在的广告；
-    5. 去除视频播放页面的广告；
-    6. 为助手添加图标；
-    7. 为助手添加设置菜单；
-    8. **获取视频播放地址（测试）**；
-    9. 去除主界面升级提示。
-
-* 麻花助手 0.5.1 Beta 2019/02/22 [仅支持2.5.0版]
-    1. 去除启动页广告；
-    2. 去除启动页5s倒计时；
-    3. 去除启动页历史广告显示；
-    4. 去除“推荐”、“电影”、“电视剧”页面中存在的广告；
-    5. 去除视频播放页面的广告；
-    6. 为助手添加图标；
-    7. 为助手添加设置菜单。
-
-* 麻花助手 0.1 Beta 2019/02/16
-    1. 去除启动页广告；
-    2. 去除启动页5s倒计时；
-    3. 去除启动页历史广告显示；
-    4. 去除“推荐”、“电影”、“电视剧”页面中存在的广告；
-    5. 去除视频播放页面的广告。  
-    
-## 如何安装
-    
-   软件运行需要 Xposed 环境，请安装 Xposed 框架后，在 Xposed
-   中启用该框架。
+麻花助手 0.6.5 Beta 2019/03/05 [支持官网2.6.1版本]
+1. 提升稳定性；
+2. 支持 EdXposed 框架，太极（Tai-Chi）框架。
    
 ## 使用帮助
    
@@ -66,17 +31,26 @@
 * 提交 issue
 * 发邮件至 haoyu3@163.com ，邮件主题注明“**麻花助手+版本号**”
 
+## Wiki
+
+* [开发进度](https://github.com/1595901624/mhzs/wiki/开发进度)
+* [扩展插件](https://github.com/1595901624/mhzs/wiki/扩展插件)
+* [更新日志](https://github.com/1595901624/mhzs/wiki/更新日志)
+
 ## 致谢
-   **感谢 `晓星` 帮忙测试Edxposed框架**  
-   **感谢 `AceMONKEY519` 提出的ISSUE帮我解决了软件失效的问题**
+   **`晓星`**、**`AceMONKEY519`**
 
 ## 捐赠
 
-<figure class="half">
-    <img src="https://github.com/1595901624/mhzs/blob/master/alipayc.jpg?raw=true">
-    &nbsp;
-    <img src="https://github.com/1595901624/mhzs/blob/master/wechatc.jpg?raw=true">
-</figure>
+<!--<figure class="half">-->
+    <!--<img src="https://github.com/1595901624/mhzs/blob/master/alipayc.jpg?raw=true">-->
+    <!--&nbsp;-->
+    <!--<img src="https://github.com/1595901624/mhzs/blob/master/wechatc.jpg?raw=true">-->
+<!--</figure>-->
+
+##### 捐赠名单
+
+**`*炳亮`**
 <!--![支付宝捐赠](https://github.com/1595901624/mhzs/blob/master/alipayc.jpg?raw=true)-->
 
 <!--![微信捐赠](https://github.com/1595901624/mhzs/blob/master/wechatc.jpg?raw=true)-->

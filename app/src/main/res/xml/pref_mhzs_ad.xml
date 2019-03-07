@@ -11,14 +11,13 @@
         <SwitchPreferenceCompat
             android:defaultValue="true"
             android:key="ad_boot"
-            android:summary="此选项与EXP和VXP冲突"
-            android:title="去除启动页广告"
+            android:title="去除启动页历史保留广告"
             app:iconSpaceReserved="false" />
 
         <SwitchPreferenceCompat
             android:defaultValue="true"
             android:key="ad_main"
-            android:summary="去除“推荐”、“电影”、“电视剧”页面中间的广告"
+            android:summary="去除“推荐”、“电影”、“电视剧”页面中间的广告(与EXP可能冲突)"
             android:title="去除首页广告"
             app:iconSpaceReserved="false" />
 
@@ -26,6 +25,12 @@
             android:defaultValue="true"
             android:key="ad_player"
             android:title="去除视频播放页广告"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="ad_marquee"
+            android:title="去除底部滚动广告"
             app:iconSpaceReserved="false" />
     </PreferenceCategory>
 </PreferenceScreen>

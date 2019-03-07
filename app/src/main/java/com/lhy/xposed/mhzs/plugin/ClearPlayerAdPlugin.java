@@ -1,5 +1,6 @@
 package com.lhy.xposed.mhzs.plugin;
 
+import com.lhy.xposed.mhzs.helper.Constant;
 import com.lhy.xposed.mhzs.helper.LogUtil;
 import com.lhy.xposed.mhzs.helper.XPrefUtils;
 
@@ -15,7 +16,6 @@ import de.robv.android.xposed.XposedHelpers;
  * @time 2019年2月16日15:12:33
  */
 public class ClearPlayerAdPlugin implements IPlugin {
-    private final String playerPresenterClassName = "com.mh.movie.core.mvp.presenter.player.PlayerPresenter";
 
     @Override
     public void run(ClassLoader classLoader) throws Throwable {
@@ -25,7 +25,7 @@ public class ClearPlayerAdPlugin implements IPlugin {
          *
          * 此变量名版本更新可能会改变
          */
-        XposedHelpers.findAndHookMethod(playerPresenterClassName, classLoader, "g", int.class, new XC_MethodReplacement() {
+        XposedHelpers.findAndHookMethod(Constant.prst.$PlayerPresenter, classLoader, "g", int.class, new XC_MethodReplacement() {
             @Override
             protected Object replaceHookedMethod(MethodHookParam methodHookParam) throws Throwable {
                 LogUtil.e("hook g method!");

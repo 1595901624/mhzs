@@ -17,7 +17,7 @@
             android:icon="@null"
             android:key="help"
             android:title="使用帮助"
-            app:iconSpaceReserved="false"></Preference>
+            app:iconSpaceReserved="false"/>
 
         <Preference
             android:key="github"
@@ -54,7 +54,7 @@
             android:defaultValue="true"
             android:key="five_seconds"
             android:title="去除5s启动"
-            android:summary="自动进入主界面"
+            android:summary="去主页广告并自动进入主界面"
             app:iconSpaceReserved="false" />
 
         <SwitchPreferenceCompat

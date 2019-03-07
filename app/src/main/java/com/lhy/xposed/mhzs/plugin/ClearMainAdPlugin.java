@@ -28,6 +28,7 @@ public class ClearMainAdPlugin implements IPlugin {
          * 在com.mh.movie.core.mvp.ui.widget.MovieCardView中
          * 替换setShowBanner方法，去掉广告
          */
+        // TODO: 2019/3/6 0006 VXP/EXP TOO SHORT METHOD 暂无替代方法
         XposedHelpers.findAndHookMethod(movieCardViewClassName, classLoader, "setShowBanner", List.class, new XC_MethodReplacement() {
             @Override
             protected Object replaceHookedMethod(MethodHookParam methodHookParam) throws Throwable {

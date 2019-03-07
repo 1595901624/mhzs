@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import com.lhy.xposed.mhzs.helper.Constant;
 import com.lhy.xposed.mhzs.helper.LogUtil;
 import com.lhy.xposed.mhzs.helper.XPrefUtils;
 
@@ -19,13 +20,12 @@ import de.robv.android.xposed.XposedHelpers;
  * @time 2019年2月18日11:51:33
  */
 public class CustomMainInterfacePlugin implements IPlugin {
-    private final String mainActivityClassName = "com.mh.movie.core.mvp.ui.activity.main.MainActivity";
     private final String r$idClassName = "com.mh.movie.core.R$id";
 
     @Override
     public void run(final ClassLoader classLoader) throws Throwable {
 
-        XposedHelpers.findAndHookMethod(mainActivityClassName, classLoader, "c", Bundle.class, new XC_MethodHook() {
+        XposedHelpers.findAndHookMethod(Constant.act.$MainActivity, classLoader, "c", Bundle.class, new XC_MethodHook() {
             @Override
             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                 LogUtil.e("hook c method!");
