@@ -39,7 +39,7 @@
 * [蓝奏云下载地址](https://www.lanzous.com/b614986/)   密码:4uk6
 
 ## 致谢
-   **`晓星`**、**`AceMONKEY519`**
+   **[a2212997715](https://github.com/a2212997715)**、**`晓星`**、**`AceMONKEY519`**
 
 ## 捐赠
 
