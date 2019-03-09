@@ -12,6 +12,7 @@ import com.lhy.xposed.mhzs.plugin.ClearPlayerAdPlugin;
 import com.lhy.xposed.mhzs.plugin.CustomMainInterfacePlugin;
 import com.lhy.xposed.mhzs.plugin.IPlugin;
 import com.lhy.xposed.mhzs.plugin.NoUpdatePlugin;
+import com.lhy.xposed.mhzs.plugin.TVPlugin;
 import com.lhy.xposed.mhzs.plugin.VideoURLPlugin;
 
 import de.robv.android.xposed.XC_MethodHook;
@@ -28,7 +29,8 @@ public class HookMain {
             new ClearMarqueePlugin(),
             new VideoURLPlugin(),
             new CustomMainInterfacePlugin(),
-            new NoUpdatePlugin()
+            new NoUpdatePlugin(),
+            new TVPlugin()
     };
 
     /**

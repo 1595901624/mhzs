@@ -5,6 +5,7 @@ import android.app.Service;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import com.lhy.xposed.mhzs.helper.ToastUtils;
 import com.lhy.xposed.mhzs.helper.XPrefUtils;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import de.robv.android.xposed.XC_MethodHook;
@@ -41,7 +43,6 @@ import de.robv.android.xposed.XposedHelpers;
 public class VideoURLPlugin implements IPlugin {
     private final String resultStrHandleSubscriberClassName = "com.mh.movie.core.mvp.model.a.b";
     private final String aesUtilClassName = "com.mh.movie.core.mvp.ui.utils.AesUtil";
-    private final String r$idClassName = "com.mh.movie.core.R$id";
     private final String videoAddressResponseClassName = "com.mh.movie.core.mvp.model.entity.response.VideoAddressResponse";
     private final String m3u8FormatBeanClassName = "com.mh.movie.core.mvp.model.entity.M3u8FormatBean";
 
@@ -61,9 +62,9 @@ public class VideoURLPlugin implements IPlugin {
      * @param classLoader
      * @throws ClassNotFoundException
      */
-    private void addExtraLayout(ClassLoader classLoader) throws ClassNotFoundException {
-        Class r$idClazz = classLoader.loadClass(r$idClassName);
-        final int clPlayerRootId = XposedHelpers.getStaticIntField(r$idClazz, "cl_player_root");
+    private void addExtraLayout(final ClassLoader classLoader) throws ClassNotFoundException {
+        Class r$idClazz = classLoader.loadClass(Constant.$id);
+//        final int clPlayerRootId = XposedHelpers.getStaticIntField(r$idClazz, "cl_player_root");
         final int rlPlayerIntroduceId = XposedHelpers.getStaticIntField(r$idClazz, "rl_player_introduce");
         XposedHelpers.findAndHookMethod(Constant.act.$PlayerActivity, classLoader, "Z", new XC_MethodHook() {
             @Override
@@ -133,6 +134,35 @@ public class VideoURLPlugin implements IPlugin {
                     }
                 });
 
+                final Object bPresent = XposedHelpers.findField(classLoader.loadClass(Constant.act.$PlayerActivity), "b");
+                final Class playerPresentClazz = classLoader.loadClass(Constant.prst.$PlayerPresenter);
+                final Method aMethod = XposedHelpers.findMethodBestMatch(playerPresentClazz, "a", Activity.class);
+                aMethod.setAccessible(true);
+                Button tvButton = new Button(activity);
+                tvButton.setText("投屏");
+                tvButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        try {
+//                            aMethod.invoke(playerPresentClazz.cast(bPresent), activity);
+                            Intent intent = new Intent(activity, classLoader.loadClass(Constant.act.$ScreeningActivity));
+                            intent.putExtra("playUrl", $480PPlayUrl);
+                            StringBuilder stringBuilder = new StringBuilder();
+                            stringBuilder.append(0);
+                            stringBuilder.append("@");
+                            stringBuilder.append(0);
+                            intent.putExtra("playId", stringBuilder.toString());
+                            intent.putExtra("playTitle", "");
+                            intent.putExtra("playDurtion", 0);
+                            activity.startActivityForResult(intent, 100);
+//                            LogUtil.e("1123" + bPresent);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            LogUtil.e("error");
+                        }
+                    }
+                });
+
                 //使用LinearLayout包含四个按钮
                 LinearLayout view = new LinearLayout(activity);
                 view.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));//设置布局参数
@@ -141,6 +171,8 @@ public class VideoURLPlugin implements IPlugin {
                 view.addView($480PBtn);
                 view.addView($720PBtn);
                 view.addView($1080PBtn);
+                // TODO: 2019/3/9 0009 投屏功能 
+//                view.addView(tvButton);
 
                 //将LinearLayout加入到根布局
                 RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(

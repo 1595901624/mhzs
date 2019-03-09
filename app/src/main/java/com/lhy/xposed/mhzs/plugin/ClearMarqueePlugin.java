@@ -27,7 +27,7 @@ public class ClearMarqueePlugin implements IPlugin {
                 Message msg = (Message) param.args[0];
 //                LogUtil.e("msg.what = " + msg.what);
                 if (msg.what == 9999) {
-                    msg.what = 98765;
+                    msg.what = 5211314;
 //                    LogUtil.e("ClearMarqueePlugin run");
                 }
             }
