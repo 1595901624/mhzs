@@ -29,8 +29,7 @@ public class HookMain {
             new ClearMarqueePlugin(),
             new VideoURLPlugin(),
             new CustomMainInterfacePlugin(),
-            new NoUpdatePlugin(),
-            new TVPlugin()
+            new NoUpdatePlugin()
     };
 
     /**
