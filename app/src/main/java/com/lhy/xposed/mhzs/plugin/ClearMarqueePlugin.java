@@ -41,6 +41,6 @@ public class ClearMarqueePlugin implements IPlugin {
 
     @Override
     public boolean isOpen() {
-        return XPrefUtils.getPref().getBoolean("ad_marquee", true);
+        return XPrefUtils.getPref().getBoolean("ad_marquee", false);
     }
 }
