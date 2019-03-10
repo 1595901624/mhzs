@@ -52,6 +52,8 @@
 ##### 捐赠二维码
 
 <figure class="half">
+    <img src="https://github.com/1595901624/mhzs/blob/master/lucky.jpg?raw=true">
+    &nbsp;
     <img src="https://github.com/1595901624/mhzs/blob/master/alipayc.jpg?raw=true">
     &nbsp;
     <img src="https://github.com/1595901624/mhzs/blob/master/wechatc.jpg?raw=true">
