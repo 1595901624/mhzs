@@ -51,6 +51,8 @@
 
 ##### 捐赠二维码
 
+**推荐通过扫码领红包的方式捐赠哟**
+
 <figure class="half">
     <img src="https://github.com/1595901624/mhzs/blob/master/lucky.jpg?raw=true">
     &nbsp;
