@@ -38,10 +38,18 @@
 * [Github下载地址](https://github.com/1595901624/mhzs/releases)
 * [蓝奏云下载地址](https://www.lanzous.com/b614986/)   密码:4uk6
 
-## 致谢
-   **[a2212997715](https://github.com/a2212997715)**、**`晓星`**、**`AceMONKEY519`**
 
-## 捐赠
+## 捐赠与致谢
+
+##### 捐赠名单
+
+**`*建鑫`**、**`*炳亮`**、**`*佳旺`**
+
+##### 致谢名单
+
+**[a2212997715](https://github.com/a2212997715)**、**`晓星`**、**`AceMONKEY519`**  
+
+##### 捐赠二维码
 
 <figure class="half">
     <img src="https://github.com/1595901624/mhzs/blob/master/alipayc.jpg?raw=true">
@@ -49,12 +57,9 @@
     <img src="https://github.com/1595901624/mhzs/blob/master/wechatc.jpg?raw=true">
 </figure>
 
-##### 捐赠名单
 
-**`*炳亮`**、**`*佳旺`** 
 <!--![支付宝捐赠](https://github.com/1595901624/mhzs/blob/master/alipayc.jpg?raw=true)-->
 
 <!--![微信捐赠](https://github.com/1595901624/mhzs/blob/master/wechatc.jpg?raw=true)-->
 
-   
    
