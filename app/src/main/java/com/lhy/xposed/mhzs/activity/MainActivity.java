@@ -33,8 +33,8 @@ public class MainActivity extends BaseActivity implements PermissionInterface {
     public void initData() {
         switchFragment(new SettingFragment());
         //初始化并发起权限申请
-        mPermissionHelper = new PermissionHelper(this, this);
-        mPermissionHelper.requestPermissions();
+//        mPermissionHelper = new PermissionHelper(this, this);
+//        mPermissionHelper.requestPermissions();
     }
 
     @Override

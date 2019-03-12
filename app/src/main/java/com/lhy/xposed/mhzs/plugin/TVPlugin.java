@@ -10,50 +10,66 @@ import android.widget.LinearLayout;
 
 import com.lhy.xposed.mhzs.helper.Constant;
 import com.lhy.xposed.mhzs.helper.LogUtil;
+import com.lhy.xposed.mhzs.helper.XPrefUtils;
+
+import java.lang.reflect.Field;
 
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedHelpers;
 
+/**
+ * TV投屏功能
+ * @time 2019年3月10日
+ * @author lhy
+ */
 public class TVPlugin implements IPlugin {
     @Override
     public void run(final ClassLoader classLoader) throws Throwable {
 
-        XposedHelpers.findAndHookMethod(Constant.act.$PlayerActivity, classLoader, "Z", new XC_MethodHook() {
+        XposedHelpers.findAndHookMethod(Constant.prst.$PlayerPresenter, classLoader, "c", int.class, new XC_MethodHook() {
             @Override
             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                 super.beforeHookedMethod(param);
-
-//                LogUtil.e("--TV Plugin--" + param.args[0]);
-                Class r$idClazz = classLoader.loadClass(Constant.$id);
-//                ll_detail_tag
-                final int llDetailTagId = XposedHelpers.getStaticIntField(r$idClazz, "rl_player_introduce");
-                final Object bPresent = XposedHelpers.findField(classLoader.loadClass(Constant.act.$PlayerActivity), "b");
-                Activity activity = (Activity) param.thisObject;
-                LinearLayout rootView = activity.findViewById(llDetailTagId);
-                Button tvButton = new Button(activity);
-                tvButton.setText("投屏");
-                tvButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        LogUtil.e("1123" + bPresent);
-
-                    }
-                });
-                rootView.setOrientation(LinearLayout.HORIZONTAL);
-                rootView.addView(tvButton, new LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+//                Class r$idClazz = classLoader.loadClass(Constant.$id);
+////                ll_detail_tag
+//                final int llDetailTagId = XposedHelpers.getStaticIntField(r$idClazz, "rl_player_introduce");
+//                final Object bPresent = XposedHelpers.findField(classLoader.loadClass(Constant.act.$PlayerActivity), "b");
+//                Activity activity = (Activity) param.thisObject;
+//                LinearLayout rootView = activity.findViewById(llDetailTagId);
+//                Button tvButton = new Button(activity);
+//                tvButton.setText("投屏");
+//                tvButton.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        LogUtil.e("1123" + bPresent);
+//
+//                    }
+//                });
+//                rootView.setOrientation(LinearLayout.HORIZONTAL);
+//                rootView.addView(tvButton, new LinearLayout.LayoutParams(
+//                        ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             }
 
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                 super.afterHookedMethod(param);
-
+                LogUtil.e("--TV Plugin--" + param.args[0]);
+                if ((int) param.args[0] == 1) {
+                    Class tableCommodityClazz = classLoader.loadClass(Constant.db.$TableCommodity);
+                    Object object = tableCommodityClazz.newInstance();
+                    Field hasFlag = XposedHelpers.findField(tableCommodityClazz, "hasFlag");
+                    hasFlag.setAccessible(true);
+                    hasFlag.setInt(object, 1);
+                    Boolean b = XposedHelpers.getStaticBooleanField(classLoader.loadClass(Constant.act.$PlayerActivity), "q");
+                    LogUtil.e("----" + b);
+                    param.setResult(object);
+                }
             }
         });
     }
 
     @Override
     public boolean isOpen() {
-        return true;
+        return XPrefUtils.getPref().getBoolean("tv_screen", false);
     }
 }

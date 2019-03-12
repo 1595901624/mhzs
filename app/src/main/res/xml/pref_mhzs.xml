@@ -14,7 +14,6 @@
 
         <Preference
             android:defaultValue="true"
-            android:icon="@null"
             android:key="help"
             android:title="使用帮助"
             app:iconSpaceReserved="false"/>
@@ -25,6 +24,12 @@
             app:iconSpaceReserved="false" />
 
         <Preference
+            android:key="lucky_alipay"
+            android:title="领支付宝红包"
+            app:isPreferenceVisible="false"
+            app:iconSpaceReserved="false" />
+
+        <Preference
             android:key="donate_alipay"
             android:title="支付宝捐赠"
             app:iconSpaceReserved="false" />
@@ -32,6 +37,7 @@
         <Preference
             android:key="donate_wx"
             android:title="微信捐赠"
+            app:isPreferenceVisible="false"
             app:iconSpaceReserved="false" />
     </PreferenceCategory>
 
@@ -64,17 +70,12 @@
             android:summary="去除主界面升级提示"
             app:iconSpaceReserved="false" />
 
-        <SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="video_url"
-            android:title="获取视频地址(测试)"
-            android:summary="开启前请参阅使用帮助"
+        <Preference
+            android:key="exp_set"
+            android:title="实验性功能"
+            android:summary="此选项中的功能可能对部分设备无效"
             app:iconSpaceReserved="false" />
 
-        <!--<SwitchPreferenceCompat-->
-            <!--android:defaultValue="true"-->
-            <!--android:key="wechat_share"-->
-            <!--android:title="假装微信分享"-->
     </PreferenceCategory>
 
 </PreferenceScreen>

@@ -17,7 +17,14 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+    <ProgressBar
+        android:id="@+id/progress_help"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"/>
+
     <WebView
+        android:visibility="gone"
         android:id="@+id/help_web"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

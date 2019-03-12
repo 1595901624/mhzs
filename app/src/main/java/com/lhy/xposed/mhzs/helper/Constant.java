@@ -12,7 +12,9 @@ public class Constant {
         public static final String $MainActivity = "com.mh.movie.core.mvp.ui.activity.main.MainActivity";
         public static final String $SplashActivity = "com.mh.movie.core.mvp.ui.activity.SplashActivity";
         public static final String $PlayerActivity = "com.mh.movie.core.mvp.ui.activity.player.PlayerActivity";
-        public static final String $ScreeningActivity ="com.mh.movie.core.mvp.ui.activity.player.ScreeningActivity";
+        public static final String $ScreeningActivity = "com.mh.movie.core.mvp.ui.activity.player.ScreeningActivity";
+
+        public static final String $WXEntryActivity = "com.amahua.ompimdrt.wxapi.WXEntryActivity";
     }
 
     public static class prst {
@@ -21,6 +23,10 @@ public class Constant {
 
     public static class util {
         public static final String $MyTimeTaskHandler = "com.mh.movie.core.mvp.ui.utils.MyTimeTaskHandler";
+    }
+
+    public static class db {
+        public static final String $TableCommodity = "com.mh.movie.core.mvp.model.db.TableCommodity";
     }
 
 }

@@ -16,6 +16,7 @@ import androidx.preference.SwitchPreferenceCompat;
 
 import com.lhy.xposed.mhzs.R;
 import com.lhy.xposed.mhzs.activity.AdSettingActivity;
+import com.lhy.xposed.mhzs.activity.ExpSettingActivity;
 import com.lhy.xposed.mhzs.activity.HelpActivity;
 import com.lhy.xposed.mhzs.activity.TabSettingActivity;
 import com.lhy.xposed.mhzs.helper.LogUtil;
@@ -58,13 +59,32 @@ public class SettingFragment extends BasePreferenceFragment {
             case "donate_alipay":
                 donateAlipay();
                 return true;
+            case "lucky_alipay":
+                getAlipayLucky();
+                return true;
             case "donate_wx":
                 donateWeixin();
+                return true;
+            case "exp_set":
+                startActivity(new Intent(getActivity(), ExpSettingActivity.class));
                 return true;
             default:
                 break;
         }
         return false;
+    }
+
+    /**
+     * 领红包
+     */
+    private void getAlipayLucky() {
+//        String luckyCode = "c1x08425objyhrkgjby6f26";
+//        boolean hasInstalledAlipayClient = AlipayDonate.hasInstalledAlipayClient(getActivity());
+//        if (hasInstalledAlipayClient) {
+//            AlipayDonate.startAlipayClient(getActivity(), luckyCode);
+//        }else {
+//            ToastUtils.toast(getActivity(), "当前设备未安装支付宝！");
+//        }
     }
 
     private void globalSet(Preference preference) {
@@ -87,6 +107,8 @@ public class SettingFragment extends BasePreferenceFragment {
         boolean hasInstalledAlipayClient = AlipayDonate.hasInstalledAlipayClient(getActivity());
         if (hasInstalledAlipayClient) {
             AlipayDonate.startAlipayClient(getActivity(), payCode);
+        }else {
+            ToastUtils.toast(getActivity(), "当前设备未安装支付宝！");
         }
     }
 

@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lhy.xposed.mhzs">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
+    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
 
     <application
         android:allowBackup="true"
@@ -17,7 +18,7 @@
             android:value="true" />
         <meta-data
             android:name="xposeddescription"
-            android:value="一款开源的净化麻花影视的插件，支持麻花影视2.6.1" />
+            android:value="一款开源的净化麻花影视的插件，当前助手版本支持麻花影视2.6.1" />
         <meta-data
             android:name="xposedminversion"
             android:value="54" />
@@ -39,6 +40,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.HelpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ExpSettingActivity"
             android:screenOrientation="portrait" />
     </application>
 

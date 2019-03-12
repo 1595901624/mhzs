@@ -1,5 +1,6 @@
 package com.lhy.xposed.mhzs.plugin;
 
+import com.lhy.xposed.mhzs.helper.Constant;
 import com.lhy.xposed.mhzs.helper.LogUtil;
 import com.lhy.xposed.mhzs.helper.XPrefUtils;
 
@@ -10,15 +11,16 @@ import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 
 /**
- * 禁止微信分享即可观看影片
+ * 强制微信分享成功
  * <p>
  * （不完美）
  *
  * @author lhy
  * @time 2019年2月17日12:18:26
+ * <p>
+ * 2019年3月12日11:07:58 开启测试
  */
-@Deprecated
-public class WatchHotMoviePlugin implements IPlugin {
+public class WechatSharePlugin implements IPlugin {
 
 //    private final String detailResponseClassName = "com.mh.movie.core.mvp.model.entity.response.DetailResponse$VideoListBean";
 //    private final String playerPresenterClassName = "com.mh.movie.core.mvp.presenter.player.PlayerPresenter";
@@ -26,7 +28,7 @@ public class WatchHotMoviePlugin implements IPlugin {
 //    private final String wxShareBroadReceiverClassName = "com.amahua.share.e$a";
 //    private final String playerActivityClassName = "com.mh.movie.core.mvp.ui.activity.player.PlayerActivity";
 
-    private final String wXEntryActivityClassName = "com.amahua.ompimdrt.wxapi.WXEntryActivity";
+//    private final String wXEntryActivityClassName = "com.amahua.ompimdrt.wxapi.WXEntryActivity";
     private final String baseRespClassName = "com.tencent.mm.opensdk.modelbase.BaseResp";
 
     @Override
@@ -53,7 +55,7 @@ public class WatchHotMoviePlugin implements IPlugin {
          * 方法1：
          * 改变分享结果
          */
-        XposedHelpers.findAndHookMethod(wXEntryActivityClassName, classLoader, "onResp", baseRespClazz, new XC_MethodHook() {
+        XposedHelpers.findAndHookMethod(Constant.act.$WXEntryActivity, classLoader, "onResp", baseRespClazz, new XC_MethodHook() {
             @Override
             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
 

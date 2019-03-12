@@ -28,7 +28,6 @@ public class HYHelper {
         Method startActivityMethod = XposedHelpers.findMethodBestMatch(activity.getClass(), "startActivity", intent);
         startActivityMethod.setAccessible(true);
         startActivityMethod.invoke(activity, intent);
-        XposedBridge.log(Config.TEST + "---" + startActivityMethod.getName() + "----");
     }
 
     /**
