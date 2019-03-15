@@ -1,10 +1,10 @@
 package com.lhy.xposed.mhzs.plugin;
 
 import android.app.Activity;
+import android.content.Intent;
 
 import com.lhy.xposed.mhzs.helper.Constant;
 import com.lhy.xposed.mhzs.helper.HYHelper;
-import com.lhy.xposed.mhzs.helper.LogUtil;
 import com.lhy.xposed.mhzs.helper.XPrefUtils;
 
 import java.util.List;
@@ -32,8 +32,11 @@ public class ClearFiveSecondsPlugin implements IPlugin {
             protected Object replaceHookedMethod(MethodHookParam methodHookParam) throws Throwable {
                 //跳转MainActivity，并结束当前进程
                 Class clazz = classLoader.loadClass(Constant.act.$MainActivity);
-                HYHelper.startActivity((Activity) methodHookParam.thisObject, clazz);
-                HYHelper.finish((Activity) methodHookParam.thisObject);
+                Activity activity = (Activity) methodHookParam.thisObject;
+
+                Intent intent = new Intent(activity, clazz);
+                XposedHelpers.callMethod(activity, "startActivity", intent);
+                XposedHelpers.callMethod(activity, "finish");
                 return null;
             }
         });

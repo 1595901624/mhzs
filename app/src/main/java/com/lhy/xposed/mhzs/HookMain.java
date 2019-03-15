@@ -3,6 +3,7 @@ package com.lhy.xposed.mhzs;
 import android.content.Context;
 
 import com.lhy.xposed.mhzs.helper.LogUtil;
+import com.lhy.xposed.mhzs.helper.XPrefUtils;
 import com.lhy.xposed.mhzs.plugin.AutoSignPlugin;
 import com.lhy.xposed.mhzs.plugin.ClearBootAdPlugin;
 import com.lhy.xposed.mhzs.plugin.ClearFiveSecondsPlugin;
@@ -41,6 +42,11 @@ public class HookMain {
      * @throws Throwable
      */
     public void main(XC_MethodHook.MethodHookParam param) throws Throwable {
+        if (!XPrefUtils.getPref().getBoolean("global_set", true)) {
+            LogUtil.e("Plugin is close!");
+            return;
+        }
+
         LogUtil.e("Plugin is open!");
         Context context = (Context) param.args[0];
         final ClassLoader classLoader = context.getClassLoader();

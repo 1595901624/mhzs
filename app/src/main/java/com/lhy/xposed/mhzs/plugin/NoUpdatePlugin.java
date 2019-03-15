@@ -50,8 +50,8 @@ public class NoUpdatePlugin implements IPlugin {
                 Object o = channelResponseClazz.cast(param.args[0]);
                 XposedHelpers.findMethodBestMatch(channelResponseClazz, "setUrl", String.class);
                 Method setUrlMethod = channelResponseClazz.getMethod("setUrl", String.class);
-//                setUrlMethod.invoke(o, "");
-                XposedBridge.invokeOriginalMethod(setUrlMethod, o, new Object[]{""});
+                setUrlMethod.invoke(o, "");
+//                XposedBridge.invokeOriginalMethod(setUrlMethod, o, new Object[]{""});
             }
         });
     }

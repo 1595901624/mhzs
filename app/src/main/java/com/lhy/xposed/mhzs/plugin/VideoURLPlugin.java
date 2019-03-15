@@ -205,22 +205,22 @@ public class VideoURLPlugin implements IPlugin {
 //                        LogUtil.e(param.args[0] + "");
                         Object videoAddressResponseObject = param.args[0];
                         Method getM3u8PlayUrlMethod = XposedHelpers.findMethodBestMatch(videoAddressResponseClazz, "getM3u8PlayUrl");
-//                        String host = (String) getM3u8PlayUrlMethod.invoke(videoAddressResponseObject);
-                        String host = (String) XposedBridge.invokeOriginalMethod(getM3u8PlayUrlMethod, videoAddressResponseObject, null);
+                        String host = (String) getM3u8PlayUrlMethod.invoke(videoAddressResponseObject);
+//                        String host = (String) XposedBridge.invokeOriginalMethod(getM3u8PlayUrlMethod, videoAddressResponseObject, null);
 
                         Method getM3u8FormatMethod = XposedHelpers.findMethodBestMatch(videoAddressResponseClazz, "getM3u8Format");
-//                        Object M3u8FormatObject = getM3u8FormatMethod.invoke(videoAddressResponseObject);
-                        Object M3u8FormatObject = XposedBridge.invokeOriginalMethod(getM3u8FormatMethod, videoAddressResponseObject, null);
+                        Object M3u8FormatObject = getM3u8FormatMethod.invoke(videoAddressResponseObject);
+//                        Object M3u8FormatObject = XposedBridge.invokeOriginalMethod(getM3u8FormatMethod, videoAddressResponseObject, null);
 
                         Method getM3u8FormatUrlMethod = XposedHelpers.findMethodBestMatch(m3u8FormatBeanClazz, "getM3u8Format", int.class);
-//                        $360PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 0);
-//                        $480PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 1);
-//                        $720PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 2);
-//                        $1080PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 3);
-                        $360PPlayUrl = (String) XposedBridge.invokeOriginalMethod(getM3u8FormatUrlMethod, M3u8FormatObject, new Object[]{0});
-                        $480PPlayUrl = (String) XposedBridge.invokeOriginalMethod(getM3u8FormatUrlMethod, M3u8FormatObject, new Object[]{1});
-                        $720PPlayUrl = (String) XposedBridge.invokeOriginalMethod(getM3u8FormatUrlMethod, M3u8FormatObject, new Object[]{2});
-                        $1080PPlayUrl = (String) XposedBridge.invokeOriginalMethod(getM3u8FormatUrlMethod, M3u8FormatObject, new Object[]{3});
+                        $360PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 0);
+                        $480PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 1);
+                        $720PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 2);
+                        $1080PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 3);
+//                        $360PPlayUrl = (String) XposedBridge.invokeOriginalMethod(getM3u8FormatUrlMethod, M3u8FormatObject, new Object[]{0});
+//                        $480PPlayUrl = (String) XposedBridge.invokeOriginalMethod(getM3u8FormatUrlMethod, M3u8FormatObject, new Object[]{1});
+//                        $720PPlayUrl = (String) XposedBridge.invokeOriginalMethod(getM3u8FormatUrlMethod, M3u8FormatObject, new Object[]{2});
+//                        $1080PPlayUrl = (String) XposedBridge.invokeOriginalMethod(getM3u8FormatUrlMethod, M3u8FormatObject, new Object[]{3});
 
                         $1080PPlayUrl = $1080PPlayUrl == null ? "无当前清晰度播放地址！" : host + $1080PPlayUrl;
                         $720PPlayUrl = $720PPlayUrl == null ? "无当前清晰度播放地址！" : host + $720PPlayUrl;

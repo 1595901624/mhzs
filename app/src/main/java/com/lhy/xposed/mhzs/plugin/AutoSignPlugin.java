@@ -3,10 +3,12 @@ package com.lhy.xposed.mhzs.plugin;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.view.View;
 import android.widget.TextView;
 
 import com.lhy.xposed.mhzs.helper.Constant;
 import com.lhy.xposed.mhzs.helper.LogUtil;
+import com.lhy.xposed.mhzs.helper.XPrefUtils;
 
 import java.lang.reflect.Field;
 
@@ -20,6 +22,10 @@ import de.robv.android.xposed.XposedHelpers;
  * @time 2019年3月14日14:26:17
  * <p>
  * 该插件实现半自动签到，只有用户登录后且当点击到“任务”页面时，才会触发签到，否则不会签到。
+ * <p>
+ * <p>
+ * * @version 1.1 2019年3月15日15:33:18
+ * * 修改Application的获取方式
  */
 public class AutoSignPlugin implements IPlugin {
     private final String $TaskWidget = "com.mh.movie.core.mvp.ui.widget.TaskWidget";
@@ -42,18 +48,23 @@ public class AutoSignPlugin implements IPlugin {
                     @Override
                     protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                         super.afterHookedMethod(param);
-                        Application application = (Application) XposedHelpers.callStaticMethod(classLoader.loadClass(Constant.$MHApplication), "c");
-                        SharedPreferences sp = application.getSharedPreferences("config", Context.MODE_PRIVATE);
-                        boolean isLogin = sp.getBoolean("key_islogin", false);
-                        LogUtil.e("isLogin = " + isLogin);
-                        if (!isLogin)
-                            return;
 
                         Field taskActionTextViewField = XposedHelpers.findField($TaskViewHolderClass, "e");
                         taskActionTextViewField.setAccessible(true);
                         TextView taskActionTextView = (TextView) taskActionTextViewField.get(param.args[0]);
-//                        LogUtil.e(taskActionTextView.getText().toString());
+
                         if (taskActionTextView.getText().toString().equals("点击签到")) {
+                            //获取Application
+                            Field f = XposedHelpers.findField($TaskViewHolderClass, "itemView");
+                            f.setAccessible(true);
+                            View view = (View) f.get(param.args[0]);
+                            Application application = (Application) view.getContext().getApplicationContext();
+                            SharedPreferences sp = application.getSharedPreferences("config", Context.MODE_PRIVATE);
+                            boolean isLogin = sp.getBoolean("key_islogin", false);
+                            LogUtil.e("isLogin = " + isLogin);
+
+                            if (!isLogin)
+                                return;
                             taskActionTextView.performClick();
                         }
                     }
@@ -63,6 +74,6 @@ public class AutoSignPlugin implements IPlugin {
 
     @Override
     public boolean isOpen() {
-        return true;
+        return XPrefUtils.getPref().getBoolean("auto_sign", false);
     }
 }
