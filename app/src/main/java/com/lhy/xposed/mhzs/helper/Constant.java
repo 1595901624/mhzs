@@ -7,6 +7,7 @@ public class Constant {
      */
 
     public static final String $id = "com.mh.movie.core.R$id";
+    public static final String $MHApplication = "com.mh.movie.core.mvp.ui.MHApplication";
 
     public static class act {
         public static final String $MainActivity = "com.mh.movie.core.mvp.ui.activity.main.MainActivity";
@@ -15,6 +16,10 @@ public class Constant {
         public static final String $ScreeningActivity = "com.mh.movie.core.mvp.ui.activity.player.ScreeningActivity";
 
         public static final String $WXEntryActivity = "com.amahua.ompimdrt.wxapi.WXEntryActivity";
+    }
+
+    public static class fgmt{
+        public static final String $TaskFragment = "com.mh.movie.core.mvp.ui.fragment.TaskFragment";
     }
 
     public static class prst {

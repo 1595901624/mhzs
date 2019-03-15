@@ -27,7 +27,8 @@ public class HYHelper {
         Intent intent = new Intent(activity, clazz);
         Method startActivityMethod = XposedHelpers.findMethodBestMatch(activity.getClass(), "startActivity", intent);
         startActivityMethod.setAccessible(true);
-        startActivityMethod.invoke(activity, intent);
+        XposedBridge.invokeOriginalMethod(startActivityMethod, activity, new Object[]{intent});
+//        startActivityMethod.invoke(activity, intent);
     }
 
     /**
@@ -40,7 +41,8 @@ public class HYHelper {
     public static void finish(Activity activity) throws InvocationTargetException, IllegalAccessException {
         Method finishMethod = XposedHelpers.findMethodBestMatch(activity.getClass(), "finish");
         finishMethod.setAccessible(true);
-        finishMethod.invoke(activity);
+        XposedBridge.invokeOriginalMethod(finishMethod, activity, null);
+//        finishMethod.invoke(activity);
     }
 
     /**
@@ -79,5 +81,12 @@ public class HYHelper {
         }
 
         return name;
+    }
+
+    /***
+     *
+     */
+    public static int getViewId(ClassLoader classLoader, String idName) throws ClassNotFoundException {
+        return XposedHelpers.getStaticIntField(classLoader.loadClass(Constant.$id), "rl_main_partner");
     }
 }

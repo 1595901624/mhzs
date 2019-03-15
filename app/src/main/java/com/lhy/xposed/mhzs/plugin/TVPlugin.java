@@ -30,31 +30,13 @@ public class TVPlugin implements IPlugin {
             @Override
             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                 super.beforeHookedMethod(param);
-//                Class r$idClazz = classLoader.loadClass(Constant.$id);
-////                ll_detail_tag
-//                final int llDetailTagId = XposedHelpers.getStaticIntField(r$idClazz, "rl_player_introduce");
-//                final Object bPresent = XposedHelpers.findField(classLoader.loadClass(Constant.act.$PlayerActivity), "b");
-//                Activity activity = (Activity) param.thisObject;
-//                LinearLayout rootView = activity.findViewById(llDetailTagId);
-//                Button tvButton = new Button(activity);
-//                tvButton.setText("投屏");
-//                tvButton.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        LogUtil.e("1123" + bPresent);
-//
-//                    }
-//                });
-//                rootView.setOrientation(LinearLayout.HORIZONTAL);
-//                rootView.addView(tvButton, new LinearLayout.LayoutParams(
-//                        ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             }
 
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                 super.afterHookedMethod(param);
                 LogUtil.e("--TV Plugin--" + param.args[0]);
-                if ((int) param.args[0] == 1) {
+                if ((int) param.args[0] == 1 || (int) param.args[0] == 9) {
                     Class tableCommodityClazz = classLoader.loadClass(Constant.db.$TableCommodity);
                     Object object = tableCommodityClazz.newInstance();
                     Field hasFlag = XposedHelpers.findField(tableCommodityClazz, "hasFlag");

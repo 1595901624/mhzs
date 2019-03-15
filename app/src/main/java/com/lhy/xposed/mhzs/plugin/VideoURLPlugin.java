@@ -82,12 +82,12 @@ public class VideoURLPlugin implements IPlugin {
                 $360PBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if ($360PPlayUrl != null) {
+                        if (!$360PPlayUrl.equals("")) {
                             ToastUtils.toast(activity, $360PPlayUrl);
                             ClipData clipData = ClipData.newPlainText(null, $360PPlayUrl);
                             clipboard.setPrimaryClip(clipData);
                         } else
-                            ToastUtils.toast(activity, "无法获取到播放地址！");
+                            ToastUtils.toast(activity, "无当前清晰度播放地址！");
                     }
                 });
 
@@ -96,26 +96,26 @@ public class VideoURLPlugin implements IPlugin {
                 $480PBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if ($480PPlayUrl != null) {
+                        if (!$480PPlayUrl.equals("")) {
                             ToastUtils.toast(activity, $480PPlayUrl);
                             ClipData clipData = ClipData.newPlainText(null, $480PPlayUrl);
                             clipboard.setPrimaryClip(clipData);
                         } else
-                            ToastUtils.toast(activity, "无法获取到播放地址！");
+                            ToastUtils.toast(activity, "无当前清晰度播放地址！");
                     }
                 });
 
-                Button $720PBtn = new Button(activity);
+                final Button $720PBtn = new Button(activity);
                 $720PBtn.setText("720P");
                 $720PBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if ($720PPlayUrl != null) {
+                        if (!$720PPlayUrl.equals("")) {
                             ToastUtils.toast(activity, $720PPlayUrl);
                             ClipData clipData = ClipData.newPlainText(null, $720PPlayUrl);
                             clipboard.setPrimaryClip(clipData);
                         } else {
-                            ToastUtils.toast(activity, "无法获取到播放地址！");
+                            ToastUtils.toast(activity, "无当前清晰度播放地址！");
                         }
                     }
                 });
@@ -125,43 +125,44 @@ public class VideoURLPlugin implements IPlugin {
                 $1080PBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if ($1080PPlayUrl != null) {
+                        if (!$1080PPlayUrl.equals("")) {
                             ToastUtils.toast(activity, $1080PPlayUrl);
                             ClipData clipData = ClipData.newPlainText(null, $1080PPlayUrl);
                             clipboard.setPrimaryClip(clipData);
-                        } else
-                            ToastUtils.toast(activity, "无法获取到播放地址！");
-                    }
-                });
-
-                final Object bPresent = XposedHelpers.findField(classLoader.loadClass(Constant.act.$PlayerActivity), "b");
-                final Class playerPresentClazz = classLoader.loadClass(Constant.prst.$PlayerPresenter);
-                final Method aMethod = XposedHelpers.findMethodBestMatch(playerPresentClazz, "a", Activity.class);
-                aMethod.setAccessible(true);
-                Button tvButton = new Button(activity);
-                tvButton.setText("投屏");
-                tvButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        try {
-//                            aMethod.invoke(playerPresentClazz.cast(bPresent), activity);
-                            Intent intent = new Intent(activity, classLoader.loadClass(Constant.act.$ScreeningActivity));
-                            intent.putExtra("playUrl", $480PPlayUrl);
-                            StringBuilder stringBuilder = new StringBuilder();
-                            stringBuilder.append(0);
-                            stringBuilder.append("@");
-                            stringBuilder.append(0);
-                            intent.putExtra("playId", stringBuilder.toString());
-                            intent.putExtra("playTitle", "");
-                            intent.putExtra("playDurtion", 0);
-                            activity.startActivityForResult(intent, 100);
-//                            LogUtil.e("1123" + bPresent);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            LogUtil.e("error");
+                        } else {
+                            ToastUtils.toast(activity, "无当前清晰度播放地址！");
                         }
                     }
                 });
+//                 TODO: 2019/3/9 0009 投屏功能 废弃
+//                final Object bPresent = XposedHelpers.findField(classLoader.loadClass(Constant.act.$PlayerActivity), "b");
+//                final Class playerPresentClazz = classLoader.loadClass(Constant.prst.$PlayerPresenter);
+//                final Method aMethod = XposedHelpers.findMethodBestMatch(playerPresentClazz, "a", Activity.class);
+//                aMethod.setAccessible(true);
+//                Button tvButton = new Button(activity);
+//                tvButton.setText("投屏");
+//                tvButton.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        try {
+////                            aMethod.invoke(playerPresentClazz.cast(bPresent), activity);
+//                            Intent intent = new Intent(activity, classLoader.loadClass(Constant.act.$ScreeningActivity));
+//                            intent.putExtra("playUrl", $480PPlayUrl);
+//                            StringBuilder stringBuilder = new StringBuilder();
+//                            stringBuilder.append(0);
+//                            stringBuilder.append("@");
+//                            stringBuilder.append(0);
+//                            intent.putExtra("playId", stringBuilder.toString());
+//                            intent.putExtra("playTitle", "");
+//                            intent.putExtra("playDurtion", 0);
+//                            activity.startActivityForResult(intent, 100);
+//                           LogUtil.e("1123" + bPresent);
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                            LogUtil.e("error");
+//                        }
+//                    }
+//                });
 
                 //使用LinearLayout包含四个按钮
                 LinearLayout view = new LinearLayout(activity);
@@ -171,7 +172,7 @@ public class VideoURLPlugin implements IPlugin {
                 view.addView($480PBtn);
                 view.addView($720PBtn);
                 view.addView($1080PBtn);
-                // TODO: 2019/3/9 0009 投屏功能 
+//                 TODO: 2019/3/9 0009 投屏功能 废弃
 //                view.addView(tvButton);
 
                 //将LinearLayout加入到根布局
@@ -204,20 +205,27 @@ public class VideoURLPlugin implements IPlugin {
 //                        LogUtil.e(param.args[0] + "");
                         Object videoAddressResponseObject = param.args[0];
                         Method getM3u8PlayUrlMethod = XposedHelpers.findMethodBestMatch(videoAddressResponseClazz, "getM3u8PlayUrl");
-                        String host = (String) getM3u8PlayUrlMethod.invoke(videoAddressResponseObject);
+//                        String host = (String) getM3u8PlayUrlMethod.invoke(videoAddressResponseObject);
+                        String host = (String) XposedBridge.invokeOriginalMethod(getM3u8PlayUrlMethod, videoAddressResponseObject, null);
 
                         Method getM3u8FormatMethod = XposedHelpers.findMethodBestMatch(videoAddressResponseClazz, "getM3u8Format");
-                        Object M3u8FormatObject = getM3u8FormatMethod.invoke(videoAddressResponseObject);
-                        Method getM3u8FormatUrlMethod = XposedHelpers.findMethodBestMatch(m3u8FormatBeanClazz, "getM3u8Format", int.class);
-                        $360PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 0);
-                        $480PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 1);
-                        $720PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 2);
-                        $1080PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 3);
+//                        Object M3u8FormatObject = getM3u8FormatMethod.invoke(videoAddressResponseObject);
+                        Object M3u8FormatObject = XposedBridge.invokeOriginalMethod(getM3u8FormatMethod, videoAddressResponseObject, null);
 
-                        $1080PPlayUrl = $1080PPlayUrl == null ? "无当前清晰度播放地址" : host + $1080PPlayUrl;
-                        $720PPlayUrl = $720PPlayUrl == null ? "无当前清晰度播放地址" : host + $720PPlayUrl;
-                        $480PPlayUrl = $480PPlayUrl == null ? "无当前清晰度播放地址" : host + $480PPlayUrl;
-                        $360PPlayUrl = $360PPlayUrl == null ? "无当前清晰度播放地址" : host + $360PPlayUrl;
+                        Method getM3u8FormatUrlMethod = XposedHelpers.findMethodBestMatch(m3u8FormatBeanClazz, "getM3u8Format", int.class);
+//                        $360PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 0);
+//                        $480PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 1);
+//                        $720PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 2);
+//                        $1080PPlayUrl = (String) getM3u8FormatUrlMethod.invoke(M3u8FormatObject, 3);
+                        $360PPlayUrl = (String) XposedBridge.invokeOriginalMethod(getM3u8FormatUrlMethod, M3u8FormatObject, new Object[]{0});
+                        $480PPlayUrl = (String) XposedBridge.invokeOriginalMethod(getM3u8FormatUrlMethod, M3u8FormatObject, new Object[]{1});
+                        $720PPlayUrl = (String) XposedBridge.invokeOriginalMethod(getM3u8FormatUrlMethod, M3u8FormatObject, new Object[]{2});
+                        $1080PPlayUrl = (String) XposedBridge.invokeOriginalMethod(getM3u8FormatUrlMethod, M3u8FormatObject, new Object[]{3});
+
+                        $1080PPlayUrl = $1080PPlayUrl == null ? "无当前清晰度播放地址！" : host + $1080PPlayUrl;
+                        $720PPlayUrl = $720PPlayUrl == null ? "无当前清晰度播放地址！" : host + $720PPlayUrl;
+                        $480PPlayUrl = $480PPlayUrl == null ? "无当前清晰度播放地址！" : host + $480PPlayUrl;
+                        $360PPlayUrl = $360PPlayUrl == null ? "无当前清晰度播放地址！" : host + $360PPlayUrl;
 
                         LogUtil.e("1080  " + $1080PPlayUrl);
                         LogUtil.e("720  " + $720PPlayUrl);

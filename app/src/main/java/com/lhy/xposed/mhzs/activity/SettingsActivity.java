@@ -44,6 +44,7 @@ import androidx.preference.PreferenceFragmentCompat;
  * href="http://developer.android.com/guide/topics/ui/settings.html">Settings
  * API Guide</a> for more information on developing a Settings UI.
  */
+@Deprecated
 public class SettingsActivity extends AppCompatPreferenceActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
 //    static {

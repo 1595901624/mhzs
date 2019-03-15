@@ -6,7 +6,6 @@ import com.lhy.xposed.mhzs.helper.XPrefUtils;
 import java.util.List;
 
 import de.robv.android.xposed.XC_MethodReplacement;
-import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 
 /**
@@ -28,11 +27,19 @@ public class ClearMainAdPlugin implements IPlugin {
          * 在com.mh.movie.core.mvp.ui.widget.MovieCardView中
          * 替换setShowBanner方法，去掉广告
          */
-        // TODO: 2019/3/6 0006 VXP/EXP TOO SHORT METHOD 暂无替代方法
-        XposedHelpers.findAndHookMethod(movieCardViewClassName, classLoader, "setShowBanner", List.class, new XC_MethodReplacement() {
+        // TODO: 2019/3/6 0006 VXP/EXP TOO SHORT METHOD
+//        XposedHelpers.findAndHookMethod(movieCardViewClassName, classLoader, "setShowBanner", List.class, new XC_MethodReplacement() {
+//            @Override
+//            protected Object replaceHookedMethod(MethodHookParam methodHookParam) throws Throwable {
+//                LogUtil.e("hook setShowBanner method!");
+//                return null;
+//            }
+//        });
+
+        XposedHelpers.findAndHookMethod(movieCardViewClassName, classLoader, "c", new XC_MethodReplacement() {
             @Override
             protected Object replaceHookedMethod(MethodHookParam methodHookParam) throws Throwable {
-                LogUtil.e("hook setShowBanner method!");
+                LogUtil.e("hook setShowBanner2 method!");
                 return null;
             }
         });

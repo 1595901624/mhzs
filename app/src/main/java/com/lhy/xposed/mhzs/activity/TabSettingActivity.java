@@ -11,7 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 public class TabSettingActivity extends BaseActivity {
     @Override
     protected void initToolbar(Toolbar mToolbar) {
-        mToolbar.setTitle("广告净化");
+        mToolbar.setTitle("底部栏设置");
         mToolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

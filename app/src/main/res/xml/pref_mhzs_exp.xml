@@ -6,11 +6,11 @@
         android:title="实验性功能"
         app:iconSpaceReserved="false">
 
-        <SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="ad_marquee"
-            android:title="去除底部滚动广告"
-            app:iconSpaceReserved="false" />
+        <!--<SwitchPreferenceCompat-->
+            <!--android:defaultValue="false"-->
+            <!--android:key="ad_marquee"-->
+            <!--android:title="去除底部滚动广告"-->
+            <!--app:iconSpaceReserved="false" />-->
 
         <SwitchPreferenceCompat
             android:defaultValue="false"
@@ -31,6 +31,13 @@
             android:key="tv_screen"
             android:summary="在没有投屏特权的账号下开启投屏功能"
             android:title="免特权投屏"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="auto_sign"
+            android:summary="当切换到任务界面时自动签到"
+            android:title="自动签到"
             app:iconSpaceReserved="false" />
     </PreferenceCategory>
 </PreferenceScreen>

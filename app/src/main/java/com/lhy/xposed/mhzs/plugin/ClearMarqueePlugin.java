@@ -16,6 +16,7 @@ import de.robv.android.xposed.XposedHelpers;
  * @author lhy
  * @time 2019年3月7日13:37:05
  */
+// TODO: 2019/3/15 0015 BUG
 public class ClearMarqueePlugin implements IPlugin {
 
     @Override

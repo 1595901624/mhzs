@@ -3,11 +3,10 @@ package com.lhy.xposed.mhzs;
 import android.content.Context;
 
 import com.lhy.xposed.mhzs.helper.LogUtil;
-import com.lhy.xposed.mhzs.helper.XPrefUtils;
+import com.lhy.xposed.mhzs.plugin.AutoSignPlugin;
 import com.lhy.xposed.mhzs.plugin.ClearBootAdPlugin;
 import com.lhy.xposed.mhzs.plugin.ClearFiveSecondsPlugin;
 import com.lhy.xposed.mhzs.plugin.ClearMainAdPlugin;
-import com.lhy.xposed.mhzs.plugin.ClearMarqueePlugin;
 import com.lhy.xposed.mhzs.plugin.ClearPlayerAdPlugin;
 import com.lhy.xposed.mhzs.plugin.CustomMainInterfacePlugin;
 import com.lhy.xposed.mhzs.plugin.IPlugin;
@@ -27,12 +26,12 @@ public class HookMain {
             new ClearBootAdPlugin(),
             new ClearMainAdPlugin(),
             new ClearPlayerAdPlugin(),
-            new ClearMarqueePlugin(),
             new VideoURLPlugin(),
             new CustomMainInterfacePlugin(),
             new NoUpdatePlugin(),
             new TVPlugin(),
-            new WechatSharePlugin()
+            new WechatSharePlugin(),
+            new AutoSignPlugin()
     };
 
     /**
@@ -42,11 +41,6 @@ public class HookMain {
      * @throws Throwable
      */
     public void main(XC_MethodHook.MethodHookParam param) throws Throwable {
-        if (!XPrefUtils.getPref().getBoolean("global_set", true)) {
-            LogUtil.e("Plugin is close!");
-            return;
-        }
-
         LogUtil.e("Plugin is open!");
         Context context = (Context) param.args[0];
         final ClassLoader classLoader = context.getClassLoader();
@@ -59,7 +53,6 @@ public class HookMain {
     }
 
     public void handleLoadPackage4release(final XC_LoadPackage.LoadPackageParam loadPackageParam) {
-
         XposedHelpers.findAndHookMethod("com.stub.StubApp", loadPackageParam.classLoader,
                 "attachBaseContext", Context.class, new XC_MethodHook() {
                     @Override

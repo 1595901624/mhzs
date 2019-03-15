@@ -9,6 +9,7 @@ import java.util.Set;
 public interface Config {
     String HELP_MARKDOWN_URL = "https://raw.githubusercontent.com/1595901624/mhzs/master/README.md";
     Set<String> HOOK_APPLICATION_PACKAGE_NAME = new HashSet<String>() {{
+//        add("com.lhy.xposed.mhzs");
         add("com.amahua.ywofnbfd");
         add("com.amahua.ompimdrt");
     }};

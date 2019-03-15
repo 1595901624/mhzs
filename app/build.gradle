@@ -5,9 +5,9 @@ android {
     defaultConfig {
         applicationId "com.lhy.xposed.mhzs"
         minSdkVersion 17
-        targetSdkVersion 28
+        targetSdkVersion 27
         versionCode 1
-        versionName "0.6.7 Beta"
+        versionName "0.6.8 Beta"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

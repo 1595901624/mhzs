@@ -49,7 +49,6 @@ public class WechatSharePlugin implements IPlugin {
 
     private void watchHotMovie(final ClassLoader classLoader) throws ClassNotFoundException {
         final Class<?> baseRespClazz = classLoader.loadClass(baseRespClassName);
-//        final Class<?> responseClazz = classLoader.loadClass("com.amahua.share.Response");
 
         /**
          * 方法1：

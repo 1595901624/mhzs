@@ -20,7 +20,6 @@ import de.robv.android.xposed.XposedHelpers;
  * @time 2019年2月18日11:51:33
  */
 public class CustomMainInterfacePlugin implements IPlugin {
-    private final String r$idClassName = "com.mh.movie.core.R$id";
 
     @Override
     public void run(final ClassLoader classLoader) throws Throwable {
@@ -30,7 +29,7 @@ public class CustomMainInterfacePlugin implements IPlugin {
             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                 LogUtil.e("hook c method!");
                 super.beforeHookedMethod(param);
-                Class R$idClass = classLoader.loadClass(r$idClassName);
+                Class R$idClass = classLoader.loadClass(Constant.$id);
                 Activity mMainActivity = (Activity) param.thisObject;
 
                 if (XPrefUtils.getPref().getBoolean("tab2", false)) {
@@ -65,15 +64,6 @@ public class CustomMainInterfacePlugin implements IPlugin {
                         LogUtil.e("R.id.rl_main_task Unknown Error!");
                     }
                 }
-
-                //                Field mListCheckBoxField = XposedHelpers.findField(classLoader.loadClass(mainActivityClassName), "q");
-                //                mListCheckBoxField.setAccessible(true);
-                //                List<CheckBox> list = (List<CheckBox>) mListCheckBoxField.get(mMainActivity);
-                //                for (CheckBox checkBox : list) {
-                //                    LogUtil.e(checkBox.isChecked() + "");
-                //                }
-                //                list.get(2).setVisibility(View.GONE);
-                //                mListCheckBoxField.set(mMainActivity, list);
 
             }
 

@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <PreferenceCategory
-        android:title="净化广告"
+        android:title="广告净化"
         app:iconSpaceReserved="false">
         <!--<CheckBoxPreference-->
         <!--android:key="checkbox"-->
@@ -17,7 +17,7 @@
         <SwitchPreferenceCompat
             android:defaultValue="true"
             android:key="ad_main"
-            android:summary="去除“推荐”、“电影”、“电视剧”页面中间的广告(与EXP可能冲突)"
+            android:summary="去除“推荐”、“电影”、“电视剧”页面中间的广告"
             android:title="去除首页广告"
             app:iconSpaceReserved="false" />
 
@@ -27,10 +27,10 @@
             android:title="去除视频播放页广告"
             app:iconSpaceReserved="false" />
 
-        <SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="ad_marquee"
-            android:title="去除底部滚动广告(测试)"
-            app:iconSpaceReserved="false" />
+        <!--<SwitchPreferenceCompat-->
+            <!--android:defaultValue="false"-->
+            <!--android:key="ad_marquee"-->
+            <!--android:title="去除底部滚动广告(测试)"-->
+            <!--app:iconSpaceReserved="false" />-->
     </PreferenceCategory>
 </PreferenceScreen>

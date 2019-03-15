@@ -1,7 +1,11 @@
 package com.lhy.xposed.mhzs.activity;
 
 import android.Manifest;
+import android.content.ContentResolver;
 import android.graphics.Color;
+import android.net.Uri;
+import android.os.Bundle;
+import android.util.Log;
 
 import com.lhy.xposed.mhzs.fragment.SettingFragment;
 import com.lhy.xposed.mhzs.helper.HYHelper;

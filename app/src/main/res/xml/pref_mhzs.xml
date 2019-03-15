@@ -23,22 +23,22 @@
             android:title="访问GITHUB"
             app:iconSpaceReserved="false" />
 
-        <Preference
-            android:key="lucky_alipay"
-            android:title="领支付宝红包"
-            app:isPreferenceVisible="false"
-            app:iconSpaceReserved="false" />
+        <!--<Preference-->
+            <!--android:key="lucky_alipay"-->
+            <!--android:title="领支付宝红包"-->
+            <!--app:isPreferenceVisible="false"-->
+            <!--app:iconSpaceReserved="false" />-->
 
         <Preference
             android:key="donate_alipay"
             android:title="支付宝捐赠"
             app:iconSpaceReserved="false" />
 
-        <Preference
-            android:key="donate_wx"
-            android:title="微信捐赠"
-            app:isPreferenceVisible="false"
-            app:iconSpaceReserved="false" />
+        <!--<Preference-->
+            <!--android:key="donate_wx"-->
+            <!--android:title="微信捐赠"-->
+            <!--app:isPreferenceVisible="false"-->
+            <!--app:iconSpaceReserved="false" />-->
     </PreferenceCategory>
 
     <PreferenceCategory

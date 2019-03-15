@@ -1,13 +1,18 @@
 package com.lhy.xposed.mhzs;
 
+import com.lhy.xposed.mhzs.fragment.SettingFragment;
 import com.lhy.xposed.mhzs.helper.Config;
+import com.lhy.xposed.mhzs.helper.LogUtil;
+import com.lhy.xposed.mhzs.helper.XPrefUtils;
 
 import java.io.File;
 import java.lang.reflect.Method;
 
 import dalvik.system.PathClassLoader;
 import de.robv.android.xposed.IXposedHookLoadPackage;
+import de.robv.android.xposed.XC_MethodReplacement;
 import de.robv.android.xposed.XposedBridge;
+import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
 
@@ -17,6 +22,13 @@ public class HookLoader implements IXposedHookLoadPackage {
     public void handleLoadPackage(final XC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
         if (!Config.HOOK_APPLICATION_PACKAGE_NAME.contains(loadPackageParam.packageName))
             return;
+        // TODO: 2019/3/14 0014 检查模块运行状态3/3
+//        hookModuleActive(loadPackageParam);
+
+        if (!XPrefUtils.getPref().getBoolean("global_set", true)) {
+            LogUtil.e("Plugin is close!");
+            return;
+        }
 
         try {
             //在发布时，直接调用即可。
@@ -50,6 +62,17 @@ public class HookLoader implements IXposedHookLoadPackage {
             aClassMethod.invoke(aClass.newInstance(), loadPackageParam);
         } catch (final Exception e) {
             XposedBridge.log(e);
+        }
+    }
+
+    /**
+     * 暂时不应用
+     *
+     * @param lpparam
+     */
+    private void hookModuleActive(XC_LoadPackage.LoadPackageParam lpparam) {
+        if (lpparam.packageName.equals(BuildConfig.APPLICATION_ID)) {
+            XposedHelpers.findAndHookMethod(SettingFragment.class.getName(), lpparam.classLoader, "isModuleActive", XC_MethodReplacement.returnConstant(true));
         }
     }
 
