@@ -1,6 +1,8 @@
 package com.lhy.xposed.mhzs;
 
 import com.lhy.xposed.mhzs.helper.Config;
+import com.lhy.xposed.mhzs.helper.Constant;
+import com.lhy.xposed.mhzs.helper.LogUtil;
 
 import java.io.File;
 import java.lang.reflect.Method;
@@ -17,6 +19,7 @@ public class HookLoader implements IXposedHookLoadPackage {
     public void handleLoadPackage(final XC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
         if (!Config.HOOK_APPLICATION_PACKAGE_NAME.contains(loadPackageParam.packageName))
             return;
+
         // TODO: 2019/3/14 0014 检查模块运行状态3/3
 //        hookModuleActive(loadPackageParam);
 

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.FeedbackActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16px">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16px"
+            android:gravity="left"
+            android:text="@string/feedback_tips"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <Spinner
+            android:id="@+id/spinner_framework"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16px"
+            android:entries="@array/framework" />
+
+        <EditText
+            android:id="@+id/feedback_detail"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="16px"
+            android:gravity="left"
+            android:hint="请输入问题详细描述(必填)" />
+
+        <EditText
+            android:id="@+id/feedback_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16px"
+            android:gravity="left"
+            android:hint="QQ或者邮箱(选填)" />
+
+        <Button
+            android:id="@+id/feedback_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16px"
+            android:text="提交"
+            android:textColor="@android:color/white"
+            android:background="@drawable/submit_selector"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -17,8 +17,10 @@ import androidx.preference.PreferenceGroup;
 import androidx.preference.SwitchPreferenceCompat;
 
 import com.lhy.xposed.mhzs.R;
+import com.lhy.xposed.mhzs.activity.AboutActivity;
 import com.lhy.xposed.mhzs.activity.AdSettingActivity;
 import com.lhy.xposed.mhzs.activity.ExpSettingActivity;
+import com.lhy.xposed.mhzs.activity.FeedbackActivity;
 import com.lhy.xposed.mhzs.activity.HelpActivity;
 import com.lhy.xposed.mhzs.activity.TabSettingActivity;
 import com.lhy.xposed.mhzs.helper.ToastUtils;
@@ -77,6 +79,12 @@ public class SettingFragment extends BasePreferenceFragment {
                 return true;
             case "exp_set":
                 startActivity(new Intent(getActivity(), ExpSettingActivity.class));
+                return true;
+            case "feedback":
+                startActivity(new Intent(getActivity(), FeedbackActivity.class));
+                return true;
+            case "about":
+                startActivity(new Intent(getActivity(), AboutActivity.class));
                 return true;
             default:
                 break;

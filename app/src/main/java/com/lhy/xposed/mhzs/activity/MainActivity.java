@@ -1,20 +1,16 @@
 package com.lhy.xposed.mhzs.activity;
 
 import android.Manifest;
-import android.content.ContentResolver;
 import android.graphics.Color;
-import android.net.Uri;
-import android.os.Bundle;
-import android.util.Log;
 
 import com.lhy.xposed.mhzs.fragment.SettingFragment;
-import com.lhy.xposed.mhzs.helper.HYHelper;
 import com.lhy.xposed.mhzs.helper.ToastUtils;
 import com.lhy.xposed.mhzs.permission.PermissionHelper;
 import com.lhy.xposed.mhzs.permission.PermissionInterface;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
+import cn.bmob.v3.update.BmobUpdateAgent;
 
 
 public class MainActivity extends BaseActivity implements PermissionInterface {
@@ -22,7 +18,7 @@ public class MainActivity extends BaseActivity implements PermissionInterface {
 
     @Override
     protected void initToolbar(Toolbar mToolbar) {
-        mToolbar.setTitle("麻花影视助手 " + HYHelper.getPackageName(this));
+        mToolbar.setTitle("麻花影视助手");
         mToolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
@@ -30,15 +26,16 @@ public class MainActivity extends BaseActivity implements PermissionInterface {
 
     @Override
     protected void initView() {
-
+        BmobUpdateAgent.setUpdateOnlyWifi(false);
+        BmobUpdateAgent.update(this);
     }
 
     @Override
     public void initData() {
         switchFragment(new SettingFragment());
         //初始化并发起权限申请
-//        mPermissionHelper = new PermissionHelper(this, this);
-//        mPermissionHelper.requestPermissions();
+        mPermissionHelper = new PermissionHelper(this, this);
+        mPermissionHelper.requestPermissions();
     }
 
     @Override
@@ -59,7 +56,7 @@ public class MainActivity extends BaseActivity implements PermissionInterface {
     public String[] getPermissions() {
         return new String[]{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE
+                Manifest.permission.READ_EXTERNAL_STORAGE,
         };
     }
 

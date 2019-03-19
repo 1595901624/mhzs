@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">麻花助手</string>
+
+    <string name="feedback_tips">注意:提交反馈将仅会收集您的设备名称、设备型号、安卓系统版本。当您提交反馈后，我们将会默认您知晓此问题。</string>
 </resources>

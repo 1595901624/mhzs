@@ -39,5 +39,12 @@
             android:summary="当切换到任务界面时自动签到"
             android:title="自动签到"
             app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="thirty_task"
+            android:summary="播放任意视频即可完成观看视频30分钟+任务"
+            android:title="观看视频30分钟+"
+            app:iconSpaceReserved="false" />
     </PreferenceCategory>
 </PreferenceScreen>

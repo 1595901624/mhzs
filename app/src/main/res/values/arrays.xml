@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="framework">
+        <item>EdXposed框架</item>
+        <item>太极(TaiChi)框架</item>
+        <item>Xposed原版框架</item>
+        <item>其它</item>
+    </string-array>
+</resources>

@@ -18,10 +18,10 @@
             android:title="使用帮助"
             app:iconSpaceReserved="false"/>
 
-        <Preference
-            android:key="github"
-            android:title="访问GITHUB"
-            app:iconSpaceReserved="false" />
+        <!--<Preference-->
+            <!--android:key="github"-->
+            <!--android:title="访问GITHUB"-->
+            <!--app:iconSpaceReserved="false" />-->
 
         <!--<Preference-->
             <!--android:key="lucky_alipay"-->
@@ -33,6 +33,16 @@
             android:key="donate_alipay"
             android:title="支付宝捐赠"
             app:iconSpaceReserved="false" />
+
+        <Preference
+            android:key="about"
+            android:title="关于"
+            app:iconSpaceReserved="false" />
+
+        <!--<Preference-->
+            <!--android:key="feedback"-->
+            <!--android:title="反馈"-->
+            <!--app:iconSpaceReserved="false" />-->
 
         <!--<Preference-->
             <!--android:key="donate_wx"-->

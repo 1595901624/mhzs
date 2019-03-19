@@ -2,6 +2,7 @@ package com.lhy.xposed.mhzs;
 
 import android.content.Context;
 
+import com.lhy.xposed.mhzs.helper.Constant;
 import com.lhy.xposed.mhzs.helper.LogUtil;
 import com.lhy.xposed.mhzs.helper.XPrefUtils;
 import com.lhy.xposed.mhzs.plugin.AutoSignPlugin;
@@ -14,6 +15,7 @@ import com.lhy.xposed.mhzs.plugin.IPlugin;
 import com.lhy.xposed.mhzs.plugin.NoUpdatePlugin;
 import com.lhy.xposed.mhzs.plugin.TVPlugin;
 import com.lhy.xposed.mhzs.plugin.VideoURLPlugin;
+import com.lhy.xposed.mhzs.plugin.WatchThirtyMinutesPlugin;
 import com.lhy.xposed.mhzs.plugin.WechatSharePlugin;
 
 import de.robv.android.xposed.XC_MethodHook;
@@ -31,8 +33,9 @@ public class HookMain {
             new CustomMainInterfacePlugin(),
             new NoUpdatePlugin(),
             new TVPlugin(),
-            new WechatSharePlugin(),
-            new AutoSignPlugin()
+            new AutoSignPlugin(),
+            new WatchThirtyMinutesPlugin(),
+            new WechatSharePlugin()
     };
 
     /**
@@ -51,6 +54,7 @@ public class HookMain {
         Context context = (Context) param.args[0];
         final ClassLoader classLoader = context.getClassLoader();
 
+
         //进入麻花领空,运行插件
         for (IPlugin iPlugin : iPlugins) {
             if (iPlugin.isOpen())
@@ -67,6 +71,8 @@ public class HookMain {
                          * 获取360加固的CLASSLOADER
                          *
                          */
+                        Constant.CURRENT_HOOK_PACKAGE_NAME = loadPackageParam.packageName;
+                        LogUtil.e("PACKAGE_NAME" + Constant.CURRENT_HOOK_PACKAGE_NAME);
                         //主函数
                         main(param);
                     }

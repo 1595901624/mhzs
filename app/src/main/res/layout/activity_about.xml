@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.FeedbackActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_about"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="16px">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher_round" />
+
+            <TextView
+                android:id="@+id/about_current_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="麻花助手当前版本：0.6.11"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/about_mh_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="支持麻花影视版本：2.6.1"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/about_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/listPreferredItemHeightSmall"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:ellipsize="marquee"
+            android:fadingEdge="horizontal"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:text="反馈"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="?android:attr/textColorPrimary" />
+
+        <TextView
+            android:id="@+id/about_update"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/listPreferredItemHeightSmall"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:ellipsize="marquee"
+            android:fadingEdge="horizontal"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:text="检查更新"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="?android:attr/textColorPrimary" />
+
+        <TextView
+            android:id="@+id/about_github"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/listPreferredItemHeightSmall"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:ellipsize="marquee"
+            android:fadingEdge="horizontal"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:text="访问GITHUB"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="?android:attr/textColorPrimary" />
+    </LinearLayout>
+
+</LinearLayout>
