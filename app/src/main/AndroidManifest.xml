@@ -76,7 +76,9 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".activity.AboutActivity"></activity>
+        <activity
+            android:name=".activity.AboutActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
