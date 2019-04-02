@@ -66,7 +66,7 @@ public class VideoURLPlugin implements IPlugin {
         Class r$idClazz = classLoader.loadClass(Constant.$id);
 //        final int clPlayerRootId = XposedHelpers.getStaticIntField(r$idClazz, "cl_player_root");
         final int rlPlayerIntroduceId = XposedHelpers.getStaticIntField(r$idClazz, "rl_player_introduce");
-        XposedHelpers.findAndHookMethod(Constant.act.$PlayerActivity, classLoader, "Z", new XC_MethodHook() {
+        XposedHelpers.findAndHookMethod(Constant.act.$PlayerActivity, classLoader, "M", new XC_MethodHook() {
             @Override
             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                 super.beforeHookedMethod(param);

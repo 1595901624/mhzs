@@ -12,9 +12,10 @@ public interface Config {
 //        add("com.lhy.xposed.mhzs");
         add("com.amahua.ywofnbfd");
         add("com.amahua.ompimdrt");
+        add("com.amahua.vwzasawq");
     }};
     /*麻花影视支持版本*/
-    String SUPPORT_MHYS_VERISON = "2.6.1";
+    String SUPPORT_MHYS_VERISON = "2.7.0";
 //    String HOOK_APPLICATION_PRE_PACKAGE_NAME = "com.amahua";
 
 }

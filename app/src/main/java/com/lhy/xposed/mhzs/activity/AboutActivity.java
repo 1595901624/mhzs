@@ -23,6 +23,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
     private Toolbar mToolbar;
     private TextView versionTextView;
     private TextView supportVersionText;
+    private TextView supportBBVersionText;
     private TextView feedbackTextView;
     private TextView updateTextView;
     private TextView githubTextView;
@@ -46,6 +47,10 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         SpannableString spannableString2 = new SpannableString("支持麻花影视版本：" + Config.SUPPORT_MHYS_VERISON);
         spannableString2.setSpan(colorSpan, 9, spannableString2.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         supportVersionText.setText(spannableString2);
+
+        SpannableString spannableString3 = new SpannableString("支持贝贝影视版本：" + Config.SUPPORT_MHYS_VERISON);
+        spannableString3.setSpan(colorSpan, 9, spannableString3.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+        supportBBVersionText.setText(spannableString3);
     }
 
     private void initView() {
@@ -53,6 +58,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         mToolbar = findViewById(R.id.toolbar_about);
         versionTextView = findViewById(R.id.about_current_version);
         supportVersionText = findViewById(R.id.about_mh_version);
+        supportBBVersionText = findViewById(R.id.about_bb_version);
         feedbackTextView = findViewById(R.id.about_feedback);
         updateTextView = findViewById(R.id.about_update);
         githubTextView = findViewById(R.id.about_github);

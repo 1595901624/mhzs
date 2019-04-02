@@ -66,10 +66,16 @@ public class WatchThirtyMinutesPlugin implements IPlugin {
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                 super.afterHookedMethod(param);
+
+                /*源代码
+                if (RecordUtils.getTotalTime(PlayerActivity.this).longValue() >= 1800000) {
+                    ((PlayerPresenter) PlayerActivity.this.b).mo6407s();
+                }
+                */
                 Activity activity = (Activity) param.thisObject;
                 Object pres = XposedHelpers.getObjectField(activity, "b");
-                XposedHelpers.callMethod(pres, "r");
-                LogUtil.e("!321312");
+                XposedHelpers.callMethod(pres, "s");
+                LogUtil.e("task 30");
             }
         });
     }

@@ -21,6 +21,13 @@
 
         <SwitchPreferenceCompat
             android:defaultValue="false"
+            android:key="share"
+            android:summary="开启此选项将会导致“强制微信分享成功”无效"
+            android:title="假装分享"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
             android:key="wechat_share"
             android:summary="此选项解决面向太极(Tai-Chi)用户分享失效的问题"
             android:title="强制微信分享成功"

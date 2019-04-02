@@ -13,6 +13,7 @@ import com.lhy.xposed.mhzs.plugin.ClearPlayerAdPlugin;
 import com.lhy.xposed.mhzs.plugin.CustomMainInterfacePlugin;
 import com.lhy.xposed.mhzs.plugin.IPlugin;
 import com.lhy.xposed.mhzs.plugin.NoUpdatePlugin;
+import com.lhy.xposed.mhzs.plugin.SharePlugin;
 import com.lhy.xposed.mhzs.plugin.TVPlugin;
 import com.lhy.xposed.mhzs.plugin.VideoURLPlugin;
 import com.lhy.xposed.mhzs.plugin.WatchThirtyMinutesPlugin;
@@ -35,7 +36,8 @@ public class HookMain {
             new TVPlugin(),
             new AutoSignPlugin(),
             new WatchThirtyMinutesPlugin(),
-            new WechatSharePlugin()
+            new WechatSharePlugin(),
+            new SharePlugin()
     };
 
     /**
