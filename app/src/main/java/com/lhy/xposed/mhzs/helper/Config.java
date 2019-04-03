@@ -13,6 +13,8 @@ public interface Config {
         add("com.amahua.ywofnbfd");
         add("com.amahua.ompimdrt");
         add("com.amahua.vwzasawq");
+        add("com.amahua.windflash"
+        );
     }};
     /*麻花影视支持版本*/
     String SUPPORT_MHYS_VERISON = "2.7.0";
