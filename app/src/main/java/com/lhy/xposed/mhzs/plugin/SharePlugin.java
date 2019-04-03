@@ -4,7 +4,11 @@ package com.lhy.xposed.mhzs.plugin;
 import com.lhy.xposed.mhzs.helper.LogUtil;
 import com.lhy.xposed.mhzs.helper.XPrefUtils;
 
+import java.lang.reflect.Method;
+
+import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XC_MethodReplacement;
+import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 
 /**
@@ -15,12 +19,14 @@ import de.robv.android.xposed.XposedHelpers;
  * @author lhy
  * @time 2019年4月2日14:13:33
  */
+
+
 public class SharePlugin implements IPlugin {
     private String $ShareManager = "com.mh.movie.core.c.a";
 
 
     @Override
-    public void run(ClassLoader classLoader) throws Throwable {
+    public void run(final ClassLoader classLoader) throws Throwable {
         //分享成功所调用的方法
         /*
            mo2835x();
@@ -85,6 +91,34 @@ public class SharePlugin implements IPlugin {
                 return null;
             }
         });
+
+        //QQ用户提供代码
+//        try {
+//            Class claz = XposedHelpers.findClass("com.mh.movie.core.mvp.ui.activity.player.PlayerActivity", classLoader);
+//            Method m = claz.getDeclaredMethod("x");
+//            XposedBridge.log(m.getName());
+//            XposedHelpers.findAndHookMethod("com.mh.movie.core.mvp.ui.activity.player.PlayerActivity", classLoader, "x", new XC_MethodHook() {
+//
+//                @Override
+//                protected void beforeHookedMethod(XC_MethodHook.MethodHookParam param) throws Throwable {
+//                    super.beforeHookedMethod(param);
+//                    XposedBridge.log("微信分享开始替换");
+//                    Class shareManagerClazz = XposedHelpers.findClass("com.mh.movie.core.c.a", classLoader);
+//                    Method shareManagerInstanceMethod = shareManagerClazz.getDeclaredMethod("i");
+//                    Object shareManager = shareManagerInstanceMethod.invoke(null);
+//                    Method methodShareWeChat = shareManager.getClass().getDeclaredMethod("g");
+//                    methodShareWeChat.invoke(shareManager);
+//                    //                    Method methodShareQQ = shareManager.getClass().getDeclaredMethod("a");
+//                    //                    methodShareQQ.invoke(shareManager);
+//                    //                    Method methodShareWeiBo = shareManager.getClass().getDeclaredMethod("d");
+//                    //                    methodShareWeiBo.invoke(shareManager);
+//                    param.setResult(null);
+//                }
+//            });
+//        } catch (Throwable e) {
+//            XposedBridge.log("微信分享错误");
+//            XposedBridge.log(e.fillInStackTrace());
+//        }
     }
 
     @Override
