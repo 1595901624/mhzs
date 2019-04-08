@@ -27,10 +27,16 @@
             android:title="去除视频播放页广告"
             app:iconSpaceReserved="false" />
 
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="ad_my"
+            android:title="去除“我的”页面广告"
+            app:iconSpaceReserved="false" />
+
         <!--<SwitchPreferenceCompat-->
-            <!--android:defaultValue="false"-->
-            <!--android:key="ad_marquee"-->
-            <!--android:title="去除底部滚动广告(测试)"-->
-            <!--app:iconSpaceReserved="false" />-->
+        <!--android:defaultValue="false"-->
+        <!--android:key="ad_marquee"-->
+        <!--android:title="去除底部滚动广告(测试)"-->
+        <!--app:iconSpaceReserved="false" />-->
     </PreferenceCategory>
 </PreferenceScreen>

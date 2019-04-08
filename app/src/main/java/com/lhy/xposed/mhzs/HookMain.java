@@ -9,6 +9,7 @@ import com.lhy.xposed.mhzs.plugin.AutoSignPlugin;
 import com.lhy.xposed.mhzs.plugin.ClearBootAdPlugin;
 import com.lhy.xposed.mhzs.plugin.ClearFiveSecondsPlugin;
 import com.lhy.xposed.mhzs.plugin.ClearMainAdPlugin;
+import com.lhy.xposed.mhzs.plugin.ClearMyFragmentAdPlugin;
 import com.lhy.xposed.mhzs.plugin.ClearPlayerAdPlugin;
 import com.lhy.xposed.mhzs.plugin.CustomMainInterfacePlugin;
 import com.lhy.xposed.mhzs.plugin.IPlugin;
@@ -37,7 +38,8 @@ public class HookMain {
             new AutoSignPlugin(),
             new WatchThirtyMinutesPlugin(),
             new WechatSharePlugin(),
-            new SharePlugin()
+            new SharePlugin(),
+            new ClearMyFragmentAdPlugin()
     };
 
     /**

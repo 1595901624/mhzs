@@ -21,10 +21,12 @@ public class Constant {
 
     public static class fgmt {
         public static final String $TaskFragment = "com.mh.movie.core.mvp.ui.fragment.TaskFragment";
+        public static final String $MyFragment = "com.mh.movie.core.mvp.ui.fragment.MyFragment";
     }
 
     public static class prst {
         public static final String $PlayerPresenter = "com.mh.movie.core.mvp.presenter.player.PlayerPresenter";
+        public static final String $MyPresenter = "com.mh.movie.core.mvp.presenter.MyPresenter";
     }
 
     public static class util {
