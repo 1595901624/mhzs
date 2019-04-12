@@ -7,10 +7,10 @@
         app:iconSpaceReserved="false">
 
         <!--<SwitchPreferenceCompat-->
-            <!--android:defaultValue="false"-->
-            <!--android:key="ad_marquee"-->
-            <!--android:title="去除底部滚动广告"-->
-            <!--app:iconSpaceReserved="false" />-->
+        <!--android:defaultValue="false"-->
+        <!--android:key="ad_marquee"-->
+        <!--android:title="去除底部滚动广告"-->
+        <!--app:iconSpaceReserved="false" />-->
 
         <SwitchPreferenceCompat
             android:defaultValue="false"
@@ -52,6 +52,20 @@
             android:key="thirty_task"
             android:summary="播放任意视频即可完成观看视频30分钟+任务"
             android:title="观看视频30分钟+"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="hide_danmu"
+            android:summary="开启后将会默认关闭弹幕，通过内置弹幕设置开关可开启"
+            android:title="默认隐藏弹幕"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="clear_danmu"
+            android:summary="开启后将会彻底关闭弹幕，内置弹幕设置开关将无效(该功能优先级高于“默认隐藏弹幕”功能)"
+            android:title="完全清除弹幕"
             app:iconSpaceReserved="false" />
     </PreferenceCategory>
 </PreferenceScreen>

@@ -6,8 +6,8 @@ android {
         applicationId "com.lhy.xposed.mhzs"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 1108
-        versionName "0.7.0 Beta"
+        versionCode 1109
+        versionName "0.7.1 Beta"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

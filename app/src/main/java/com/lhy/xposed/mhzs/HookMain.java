@@ -7,11 +7,13 @@ import com.lhy.xposed.mhzs.helper.LogUtil;
 import com.lhy.xposed.mhzs.helper.XPrefUtils;
 import com.lhy.xposed.mhzs.plugin.AutoSignPlugin;
 import com.lhy.xposed.mhzs.plugin.ClearBootAdPlugin;
+import com.lhy.xposed.mhzs.plugin.ClearDanmuPlugin;
 import com.lhy.xposed.mhzs.plugin.ClearFiveSecondsPlugin;
 import com.lhy.xposed.mhzs.plugin.ClearMainAdPlugin;
 import com.lhy.xposed.mhzs.plugin.ClearMyFragmentAdPlugin;
 import com.lhy.xposed.mhzs.plugin.ClearPlayerAdPlugin;
 import com.lhy.xposed.mhzs.plugin.CustomMainInterfacePlugin;
+import com.lhy.xposed.mhzs.plugin.HideDanmuPlugin;
 import com.lhy.xposed.mhzs.plugin.IPlugin;
 import com.lhy.xposed.mhzs.plugin.NoUpdatePlugin;
 import com.lhy.xposed.mhzs.plugin.SharePlugin;
@@ -39,7 +41,9 @@ public class HookMain {
             new WatchThirtyMinutesPlugin(),
             new WechatSharePlugin(),
             new SharePlugin(),
-            new ClearMyFragmentAdPlugin()
+            new ClearMyFragmentAdPlugin(),
+            new ClearDanmuPlugin(),
+            new HideDanmuPlugin()
     };
 
     /**
